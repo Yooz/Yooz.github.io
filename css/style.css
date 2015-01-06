@@ -1442,8 +1442,8 @@ section.comment {
 }
 .openaside {
   display: none;
-  position: absoluate;
-  right: 15%;
+  position: fixed;
+  right: 7.5%;
   top: 260px;
 }
 .openaside a {
