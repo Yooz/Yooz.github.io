@@ -1440,6 +1440,283 @@ section.comment {
 .active {
   color: #ea6753 !important;
 }
+.openaside {
+  display: none;
+  position: fixed;
+  right: 7.5%;
+  top: 260px;
+}
+.openaside a {
+  display: block;
+  color: #fff;
+  border: 1px solid #fff;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+  background: #ea6753;
+  padding: 0.2em 0.55em;
+}
+.openaside a::before {
+  font-family: "FontAwesome";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  content: "\f0c9";
+}
+.closeaside {
+  display: none;
+}
+.closeaside a {
+  color: #ea6753;
+}
+.closeaside a:hover {
+  color: #2ca6cb;
+}
+.closeaside a::before {
+  font-family: "FontAwesome";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  content: "\f0c9";
+}
+@media only screen and (min-width: 1024px) {
+  .closeaside {
+    display: block;
+    position: absolute;
+    right: 25px;
+    top: 22px;
+  }
+}
+#asidepart {
+  background: #fafafa;
+  margin: 1em 0 0;
+  padding: 0.5em 2% 1em;
+}
+@media only screen and (min-width: 1024px) {
+  #asidepart {
+    position: relative;
+    float: left;
+    width: 18%;
+    margin: 2em 0 0 3%;
+  }
+}
+.asidetitle {
+  font-size: 1.1em;
+  color: #2ca6cb;
+  padding: 0 0 0.3125em 0;
+  border-bottom: 0.1875em solid #ccc;
+}
+.asidetitle a {
+  color: #2ca6cb;
+}
+.asidetitle a:hover {
+  color: #ea6753;
+  -webkit-transition: color 0.5s;
+  -moz-transition: color 0.5s;
+  -o-transition: color 0.5s;
+  -ms-transition: color 0.5s;
+  transition: color 0.5s;
+}
+@media only screen and (min-width: 768px) {
+  .categorieslist {
+    width: 45%;
+    float: left;
+    margin: 0 5% 0 0;
+  }
+}
+@media only screen and (min-width: 1024px) {
+  .categorieslist {
+    width: 100%;
+    float: none;
+    margin: 1em 0 0;
+  }
+}
+.categorieslist li {
+  border-bottom: 1px solid #ccc;
+}
+.categorieslist li a {
+  display: block;
+  padding: 0.5em 5%;
+}
+.categorieslist li a:hover {
+  color: #ea6753;
+}
+.tagslist {
+  margin: 1em 0 0;
+}
+@media only screen and (min-width: 768px) {
+  .tagslist {
+    width: 45%;
+    float: left;
+    margin: 0 5% 0 0;
+  }
+}
+@media only screen and (min-width: 1024px) {
+  .tagslist {
+    width: 100%;
+    float: none;
+    margin: 1em 0 0;
+  }
+}
+.tagslist ul {
+  padding: 0.5em 0;
+}
+.tagslist ul li {
+  float: left;
+}
+.tagslist ul li a {
+  display: block;
+  margin: 0.3125em;
+  padding: 0.125em 0.3125em;
+  background: #dbdbdb;
+}
+.tagslist ul li a:hover {
+  color: #ea6753;
+  background: #e6e6e6;
+}
+.rsspart {
+  background: #ea6753;
+  width: 100%;
+}
+@media only screen and (min-width: 768px) {
+  .rsspart {
+    float: left;
+    width: 45%;
+    margin: 0 5% 0 0;
+  }
+}
+@media only screen and (min-width: 1024px) {
+  .rsspart {
+    width: 100%;
+    float: none;
+    margin: 1em 0 0;
+  }
+}
+.rsspart a {
+  color: #fff;
+  display: block;
+  padding: 0.625em 0;
+  text-align: center;
+}
+.rsspart a:hover {
+  color: #ea6753;
+  background: #fafafa;
+}
+.rsspart a::before {
+  font-family: "FontAwesome";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  padding-right: 0.5em;
+  content: "\f09e";
+}
+@media only screen and (min-width: 768px) {
+  .archiveslist {
+    width: 45%;
+    float: left;
+    margin: 0 5% 0 0;
+  }
+}
+@media only screen and (min-width: 1024px) {
+  .archiveslist {
+    width: 100%;
+    float: none;
+    margin: 1em 0 0;
+  }
+}
+.archiveslist li {
+  font-size: 0.8em;
+  line-height: 2em;
+}
+.archiveslist li a {
+  padding: 0.5em;
+}
+.archiveslist li a:hover {
+  color: #ea6753;
+  -webkit-transition: color 0.25s;
+  -moz-transition: color 0.25s;
+  -o-transition: color 0.25s;
+  -ms-transition: color 0.25s;
+  transition: color 0.25s;
+}
+.archiveslist .archive-list-count:before {
+  content: "(";
+}
+.archiveslist .archive-list-count:after {
+  content: ")";
+}
+.archive-list {
+  padding: 0.5em 0;
+}
+.archive-float ul {
+  padding: 0;
+}
+.archive-float li {
+  float: left;
+  margin: 0.3em;
+}
+@media only screen and (min-width: 1024px) {
+  .archive-float li {
+    float: none;
+  }
+}
+@media only screen and (min-width: 768px) {
+  .tagcloudlist {
+    width: 45%;
+    float: left;
+    margin: 0 5% 0 0;
+  }
+}
+@media only screen and (min-width: 1024px) {
+  .tagcloudlist {
+    width: 100%;
+    float: none;
+    margin: 1em 0 0;
+  }
+}
+.tagcloudlist .tagcloudlist a {
+  padding: 0.2em;
+  display: block;
+  float: left;
+}
+.tagcloudlist .tagcloudlist a:hover {
+  color: #ea6753;
+  -webkit-transition: color 0.25s;
+  -moz-transition: color 0.25s;
+  -o-transition: color 0.25s;
+  -ms-transition: color 0.25s;
+  transition: color 0.25s;
+}
+.linkslist {
+  margin-top: 0.5em;
+}
+@media only screen and (min-width: 768px) {
+  .linkslist {
+    width: 45%;
+    float: left;
+    margin: 0 5% 0 0;
+  }
+}
+@media only screen and (min-width: 1024px) {
+  .linkslist {
+    width: 100%;
+    float: none;
+    margin: 1em 0 0;
+  }
+}
+.linkslist ul {
+  padding: 0.5em 0;
+}
+.linkslist ul a {
+  font-size: 1em;
+  line-height: 1.5;
+  display: block;
+  padding: 0 3%;
+}
+.linkslist ul a:hover {
+  color: #ea6753;
+  -webkit-transition: color 0.25s;
+  -moz-transition: color 0.25s;
+  -o-transition: color 0.25s;
+  -ms-transition: color 0.25s;
+  transition: color 0.25s;
+}
 footer {
   margin-top: 1em;
   background: #1f1f1f;
