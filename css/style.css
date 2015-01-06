@@ -1441,9 +1441,9 @@ section.comment {
   color: #828282 !important;
 }
 .openaside {
-  display: yes;
-  position: fixed;
-  right: 7.5%;
+  display: none;
+  position: absoluate;
+  right: 15%;
   top: 260px;
 }
 .openaside a {
