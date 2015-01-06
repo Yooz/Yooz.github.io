@@ -1,127 +1,292 @@
-<!DOCTYPE HTML>
-<html>
+
+ <!DOCTYPE HTML>
+<html >
 <head>
-  <meta charset="utf-8">
+  <meta charset="UTF-8">
   
-  <title>About this blog and me | More than Dimensions</title>
-  <meta name="author" content="Clivia">
-
-  
-  <meta name="description" content="What the blog talk about and Why Hexo?
+    <title>About this blog and me | More than Dimensions</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=3, minimum-scale=1">
+    
+    <meta name="author" content="Clivia">
+    
+    <meta name="description" content="What the blog talk about and Why Hexo?
 4天时间，从jekyll折腾到Hexo，算是尘埃落定了。之前的blog是在VPS上搭的LNMP+Wordpress，正如大多数人所吐槽的那样，Wordpress太大了，什么都为你准备好了，实际上可自己折腾的太少了，而Git">
-  
-  
+    
+    
+    
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/pacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/pacman.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css" type="text/css">
 
-  <link rel="alternate" href="/atom.xml" title="More than Dimensions" type="application/atom+xml">
-  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
-  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
-  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script>
-  
 </head>
 
-<body>
-  <header id="header" class="inner"><nav>
-  <ul>
-    
-      <li><a href="/">Home</a></li>
-    
-      <li><a href="/archives">Archives</a></li>
-    
-  </ul>
-</nav></header>
-  <div id="content" class="inner"><article class="post">
-  
-    <div class="gallery">
-  <div class="photoset">
-    
-      <img src="">
-    
-  </div>
-  <div class="control">
-    <div class="prev"></div>
-    <div class="next"></div>
-  </div>
+  <body>
+    <header>
+      <div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.svg" alt="More than Dimensions" title="More than Dimensions"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="More than Dimensions">More than Dimensions</a></h1>
+				<h2 class="blog-motto">Thinking and Practice</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					
+						<li><a href="/">Home</a></li>
+					
+						<li><a href="/archives">Archives</a></li>
+					
+					<li>
+					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="text" id="search" name="q" autocomplete="off" maxlength="20" placeholder="Search" />
+						<input type="hidden" name="q" value="site:cliviazhou.github.io">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
 </div>
-  
-  <header>
-    
-  
-    <h1 class="title">About this blog and me</h1>
-  
 
-    <time datetime="2015-01-05T07:22:25.000Z">
-  <span class="day">5</span><span class="month">Jan</span>
-</time>
-  </header>
-  <div class="entry-content">
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
     
-      <h3 id="What_the_blog_talk_about_and_Why_Hexo?">What the blog talk about and Why Hexo?</h3>
+      <a href="/2015/01/05/About-this-blog-and-me/" title="About this blog and me" itemprop="url">About this blog and me</a>
+  </h1>
+  <p class="article-author">By
+    
+      <a href="http://cliviazhou.github.io" title="Clivia">Clivia</a>
+    </p>
+  <p class="article-time">
+    <time datetime="2015-01-05T07:22:25.000Z" itemprop="datePublished">Jan 5 2015</time>
+    Updated:<time datetime="2015-01-06T02:09:01.000Z" itemprop="dateModified">Jan 6 2015</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">Contents</strong>
+		<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#What_the_blog_talk_about_and_Why_Hexo?"><span class="toc-number">1.</span> <span class="toc-text">What the blog talk about and Why Hexo?</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#How_about_me?"><span class="toc-number">2.</span> <span class="toc-text">How about me?</span></a></li></ol>
+		</div>
+		
+		<h3 id="What_the_blog_talk_about_and_Why_Hexo?">What the blog talk about and Why Hexo?</h3>
 <p>4天时间，从jekyll折腾到Hexo，算是尘埃落定了。之前的blog是在VPS上搭的LNMP+Wordpress，正如大多数人所吐槽的那样，Wordpress太大了，什么都为你准备好了，实际上可自己折腾的太少了，而Github Pages相比之下显得简洁，灵活,geek。而且我也不想把VPS仅仅用来搭个博客，既然github提供了免费的空间，而且社区又活跃，为什么不用呢。于是在一番搜索之后得到的结论是，在github在搭建自己的静态博客。我先是选择了jekyll，如果我没理解错的话，一个ruby写的静态页面生成器。之后又在领导桑的推荐下换成了Hexo，但是我发现两者其实并没有差别，只是用了不同的语言写的（后者用的NodeJS）。大概的步骤是，我们用Markdown写好的页面，通过Hexo(jekyll渲染，生成HTML，然后部署到Github Pages上。（如果此处理解有误，还请指出）<br>关于如何在Github上用Hexo搭建博客。我想如果你只要在搜索引擎里面里面输入github, hexo, 博客三个关键字，就会有大量的教程返回给你，所以在此我也不想多说。好像这违背我搭博客的初衷：分享知识。其实不是，因为这些东西并非我思考得出来的，如果我把过程写一遍，就好像把别人的文章抄过来一样。我愿意分享的，是经过我独立思考的，可能它有用，可能Just for fun。在我读了某本数学家传记之后，我可能会写下一篇文章来证明他的理论。当然，前提是有足够的基础和时间。我也乐于把不懂的地方写在博客，这样方便与他人交流。总之，这个博客的初衷就是：分享知识。</p>
 <h3 id="How_about_me?">How about me?</h3>
 <p>任何人都没法完整地客观评价自己，我也不会评价自己。在经历了二十来年之后，我好像有所领悟。我希望我是这样一个人：理性、冷静、成熟又不失风度。当然做到这些还有一段路要走，我也会用行动践行这一点。<br>上段是感性认识。标签化的我是一个爱好日漫的宅男，计算机科学专业学生，（程序猿？），爱好数学，崇尚科学。<br>最后，这是我的<a href="http://weibo.com/2091533737/" target="_blank" rel="external">新浪微博</a>。</p>
+  
+	</div>
+		<footer class="article-footer clearfix">
 
-    
-    
-    <footer class="meta">
-      
-      
-      
-    </footer>
-    
-  </div>
-  
-<section id="comment">
-  <div id="disqus_thread" aria-live="polite">
-    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-  </div>
-</section>
 
-</article></div>
-  <footer id="footer" class="inner"><div class="social alignright">
-  
-  
-  
-  
-  <a class="rss" href="/atom.xml" title="RSS">RSS</a>
+
+
+<div class="article-share" id="share">
+
+  <div data-url="http://cliviazhou.github.io/2015/01/05/About-this-blog-and-me/" data-title="About this blog and me | More than Dimensions" data-tsina="null" class="share clearfix">
+  </div>
+
 </div>
-<p>
+</footer>   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/2015/01/06/code-test/" title="Code test">
+  <strong>PREVIOUS:</strong><br/>
+  <span>
+  Code test</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/2014/12/31/hello-world/"  title="Hello World">
+ <strong>NEXT:</strong><br/> 
+ <span>Hello World
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">Contents</strong>
+  <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#What_the_blog_talk_about_and_Why_Hexo?"><span class="toc-number">1.</span> <span class="toc-text">What the blog talk about and Why Hexo?</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#How_about_me?"><span class="toc-number">2.</span> <span class="toc-text">How about me?</span></a></li></ol>
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
+<aside class="clearfix">
+
   
-  &copy; 2015 Clivia
+
   
-</p>
-<div class="clearfix"></div></footer>
-  <script src="/js/jquery.imagesloaded.min.js"></script>
-<script src="/js/gallery.js"></script>
+
+  <div class="rsspart">
+	<a href="null" target="_blank" title="rss">RSS</a>
+</div>
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<div class="social-font clearfix">
+		
+		
+		
+		
+		
+	</div>
+		<p class="copyright">Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/A-limon/pacman" target="_blank" title="Pacman">Pacman</a> © 2015 
+		
+		<a href="http://cliviazhou.github.io" target="_blank" title="Clivia">Clivia</a>
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.1.0.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else
+    {
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      h  = $('article h2')
+      ah = $('article h2'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  if(ah.length==0){
+    t.css('display','none');
+  }else{
+    c.click(function(){
+      ta.css('display', 'block').addClass('fadeIn');
+    });
+    o.click(function(){
+      ta.css('display', 'none');
+    });
+    $(window).scroll(function(){
+      ta.css("top",Math.max(140,320-$(this).scrollTop()));
+    });
+  };
+});
+</script>
 
 
 <script type="text/javascript">
-var disqus_shortname = 'morethandimensions';
-
-(function(){
-  var dsq = document.createElement('script');
-  dsq.type = 'text/javascript';
-  dsq.async = true;
-  dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
-  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-}());
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina');
+  var html = [
+  '<a href="#" class="overlay" id="qrcode"></a>',
+  '<div class="qrcode clearfix"><span>扫描二维码分享到微信朋友圈</span><a class="qrclose" href="#share"></a><strong>Loading...Please wait</strong><img id="qrcode-pic" data-src="http://s.jiathis.com/qrcode.php?url=' + encodedUrl + '"/></div>',
+  '<a href="#textlogo" class="article-back-to-top" title="Top"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="QRcode"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="Weibo"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+  $('.article-share-qrcode').click(function(){
+    var imgSrc = $('#qrcode-pic').attr('data-src');
+    $('#qrcode-pic').attr('src', imgSrc);
+    $('#qrcode-pic').load(function(){
+        $('.qrcode strong').text(' ');
+    });
+  });
+});     
 </script>
 
 
 
-<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
-<script src="/fancybox/jquery.fancybox.pack.js"></script>
-<script type="text/javascript">
-(function($){
-  $('.fancybox').fancybox();
-})(jQuery);
-</script>
 
 
-<div id="phasebeam">
-  <canvas></canvas>
-  <canvas></canvas>
-  <canvas></canvas>
-</div>
-<script src="/js/phasebeam.js"></script>
-</body>
+
+  </body>
 </html>
