@@ -1462,7 +1462,7 @@ section.comment {
   content: "\f0c9";
 }
 .closeaside {
-  display: yes;
+  display: none;
 }
 .closeaside a {
   color: #828282;
