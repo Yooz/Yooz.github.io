@@ -1440,13 +1440,13 @@ section.comment {
 .active {
   color: #828282 !important;
 }
-.openaside {
+.closeaside {
   display: none;
   position: fixed;
   right: 7.5%;
   top: 260px;
 }
-.openaside a {
+.closeaside a {
   display: block;
   color: #fff;
   border: 1px solid #fff;
@@ -1455,29 +1455,29 @@ section.comment {
   background: #828282;
   padding: 0.2em 0.55em;
 }
-.openaside a::before {
-  font-family: "FontAwesome";
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  content: "\f0c9";
-}
-.closeaside {
-  display: none;
-}
-.closeaside a {
-  color: #828282;
-}
-.closeaside a:hover {
-  color: #2ca6cb;
-}
 .closeaside a::before {
   font-family: "FontAwesome";
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   content: "\f0c9";
 }
+.openaside {
+  display: none;
+}
+.openaside a {
+  color: #828282;
+}
+.openaside a:hover {
+  color: #2ca6cb;
+}
+.openaside a::before {
+  font-family: "FontAwesome";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  content: "\f0c9";
+}
 @media only screen and (min-width: 1024px) {
-  .closeaside {
+  .openaside {
     display: block;
     position: absolute;
     right: 25px;
