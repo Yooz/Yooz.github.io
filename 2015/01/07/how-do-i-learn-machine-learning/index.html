@@ -82,6 +82,11 @@
 	<div class="article-content">
 		
 		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">Contents</strong>
+		<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#How_do_I_learn_Machine_Learning?"><span class="toc-number">1.</span> <span class="toc-text">How do I learn Machine Learning?</span></a></li></ol>
+		</div>
+		
 		<h2 id="How_do_I_learn_Machine_Learning?">How do I learn Machine Learning?</h2>
 <p>很早在<a href="https://www.quora.com/How-do-I-learn-Machine-Learning-1" target="_blank" rel="external">quora</a>上看到了这个问题，现在有空了，就把这些整理一下，当然要真正掌握Marchine Learning，还是得经过科班训练才行。从MIT，Stanford…到国内的高校，ML都已经成为热门的研究方向。事实上，学术界的热度并不高于工业界，随便上LinkedIn或者国内的招聘网站上搜索ML、DM的职位，需求量仍旧很大。随着像Google，Facebook，国内BAT这些公司“大数据“的产生，不可避免地推动着学术界的研究。</p>
 <p>当然对于一个ML的初学者，扎实的数学功底是必须的，特别是概率统计和线性代数。这里可以提供一些资料：</p>
@@ -138,8 +143,13 @@
 </div>  
       <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
 
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">Contents</strong>
+  <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#How_do_I_learn_Machine_Learning?"><span class="toc-number">1.</span> <span class="toc-text">How do I learn Machine Learning?</span></a></li></ol>
+  </div>
+
 <div id="asidepart">
-<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
+ <div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
 <aside class="clearfix">
 
   
@@ -148,6 +158,7 @@
 
 </aside>
 </div>
+
     </div>
     <footer><div id="footer" >
 	
@@ -202,6 +213,8 @@ $(document).ready(function(){
       m.removeClass('moveMain');
       a.css('display', 'block').removeClass('fadeOut');
       o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
         
     }
   });
