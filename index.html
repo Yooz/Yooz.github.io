@@ -64,6 +64,54 @@
   <header>
     
       <div class="icon"></div>
+      <a href="/2015/01/18/machine-learning-regression/">
+  <time datetime="2015-01-18T09:56:13.000Z">
+    Jan 18 2015
+  </time>
+</a>
+    
+    
+  
+    <h1 class="title"><a href="/2015/01/18/machine-learning-regression/">机器学习(1) -- 回归问题</a></h1>
+  
+
+  </header>
+  
+  <div class="entry">
+    
+      <h2 id="回归问题">回归问题</h2>
+<h3 id="线性回归问题—最小二乘法-">线性回归问题—最小二乘法.</h3>
+<p>在机器学习算法中，通常可以分为回归、聚类、贝叶斯、决策树等问题。而在回归问题中最典型的就是<strong>线性回归(Linear Regression)</strong>，线性回归中常用的方法是<strong>最小二乘法(Ordinary Least Square)</strong>.本篇文章将详细介绍最小二乘法的推导过程，以及应用最小二乘法进行线性回归的例子。</p>
+<p>线性回归属于监督性学习，所谓监督性学习，是指给出一定的训练样本，通过选定特定的机器学习算法，构造假设函数h，根据训练样本求得函数h的参数。那么对于需要解决的问题输入x，经过函数h处理，我们可以得到预测的结果。如下图：</p>
+<p><img src="/img/sup-len-info.png"></p>
+<p>问题的关键在于怎么选择学习算法，构造h函数。对于线性回归问题来说，通常我们有一组变量，用一个列向量<strong>X<sup>T</sup></strong>(或者tX)表示，那就是：</p>
+<pre><code>    tX = [x0, x1, x2, <span class="keyword">...</span> ,xn]      // 通常 x0 = <span class="number">1</span>
+</code></pre><p>训练集中的每个样本都是这样的一个一维的向量，对应的参(系)数向量假设为<strong>C</strong>:</p>
+<pre><code>    C = [c0, c1, c2, <span class="keyword">...</span>, cn]
+</code></pre><p>根据线性回归的定义，我们假定的<strong>h</strong>函数就为<strong>h(x;c) = C<sup>T</sup>X</strong>(此处不明白h这种表示方法的可以看一下概率论的参数估计那一章)</p>
+<pre><code>    h(x;c) = c0 + c1*x1 + c2*x2 + <span class="keyword">...</span> + cn*xn
+</code></pre><p>我们要明白回归问题实质上是对于输入的<strong>X</strong>，尽可能给出准确的预测。事实上，最小二乘法就是这样一个方案，来使得对线性回归的问题预测最优。对于样本集中的每个<strong>x<sub>i</sub></strong>，都有与之对应的<strong>y<sub>i</sub></strong>。最小二乘法就是找出这样一组参数，满足:</p>
+<p><img src="/img/ord-min.png"></p>
+<p>所以为了找到这样一组参数，我们需要采取一系列的策略来达到目的。为了方便，假设函数J(c)满足：</p>
+<p><img src="/img/jc-fun.png"></p>
+
+    
+  </div>
+  <footer class="end-sep">
+    
+      
+      
+    
+    <div class="clearfix"></div>
+  </footer>
+</article>
+
+
+  
+    <article class="post">
+  <header>
+    
+      <div class="icon"></div>
       <a href="/2015/01/09/About-this-blog-and-me/">
   <time datetime="2015-01-09T11:20:14.000Z">
     Jan 9 2015

@@ -1,0 +1,162 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  
+  <title>机器学习(1) -- 回归问题 | MathDimensions</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  
+    <meta name="author" content="Clivia">
+  
+  
+    <meta name="description" content="回归问题
+线性回归问题—最小二乘法.
+在机器学习算法中，通常可以分为回归、聚类、贝叶斯、决策树等问题。而在回归问题中最典型的就是线性回归(Linear Regression)，线性回归中常用的方法是最小二乘法(Ordinary Least Square).本篇文章将详细介绍最小二乘法的推导过程，以及应用最小二乘法进行线性回归的例子。
+线性回归属于监督性学习，所谓监督性学习，是指给出一定的训练样本，">
+  
+  <meta name="description" content="回归问题
+线性回归问题—最小二乘法.
+在机器学习算法中，通常可以分为回归、聚类、贝叶斯、决策树等问题。而在回归问题中最典型的就是线性回归(Linear Regression)，线性回归中常用的方法是最小二乘法(Ordinary Least Square).本篇文章将详细介绍最小二乘法的推导过程，以及应用最小二乘法进行线性回归的例子。
+线性回归属于监督性学习，所谓监督性学习，是指给出一定的训练样本，">
+<meta property="og:type" content="article">
+<meta property="og:title" content="机器学习(1) -- 回归问题">
+<meta property="og:url" content="http://cliviazhou.github.io/2015/01/18/machine-learning-regression/">
+<meta property="og:site_name" content="MathDimensions">
+<meta property="og:description" content="回归问题
+线性回归问题—最小二乘法.
+在机器学习算法中，通常可以分为回归、聚类、贝叶斯、决策树等问题。而在回归问题中最典型的就是线性回归(Linear Regression)，线性回归中常用的方法是最小二乘法(Ordinary Least Square).本篇文章将详细介绍最小二乘法的推导过程，以及应用最小二乘法进行线性回归的例子。
+线性回归属于监督性学习，所谓监督性学习，是指给出一定的训练样本，">
+<meta property="og:image" content="/img/sup-len-info.png">
+<meta property="og:image" content="/img/ord-min.png">
+<meta property="og:image" content="/img/jc-fun.png">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="机器学习(1) -- 回归问题">
+<meta name="twitter:description" content="回归问题
+线性回归问题—最小二乘法.
+在机器学习算法中，通常可以分为回归、聚类、贝叶斯、决策树等问题。而在回归问题中最典型的就是线性回归(Linear Regression)，线性回归中常用的方法是最小二乘法(Ordinary Least Square).本篇文章将详细介绍最小二乘法的推导过程，以及应用最小二乘法进行线性回归的例子。
+线性回归属于监督性学习，所谓监督性学习，是指给出一定的训练样本，">
+
+  
+    <link rel="alternate" href="/atom.xml" title="MathDimensions" type="application/atom+xml">
+  
+  
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
+</head>
+
+<body>
+  <div class="wrapper">
+    <header id="header">
+  <div class="title">
+    <h1><a href="/">MathDimensions</a></h1>
+    <p><a href="/"></a></p>
+  </div>
+  <nav class="nav">
+    <ul>
+      
+        <li><a href="/">Home</a></li>
+      
+        <li><a href="/archives">Archives</a></li>
+      
+      
+        <li><a href="/atom.xml">RSS</a></li>
+      
+    </ul>
+    <div class="clearfix"></div>
+  </nav>
+  <div class="clearfix"></div>
+</header>
+    <div class="content"><article class="post">
+  <header>
+    
+      <div class="icon"></div>
+      <a href="/2015/01/18/machine-learning-regression/">
+  <time datetime="2015-01-18T09:56:13.000Z">
+    Jan 18 2015
+  </time>
+</a>
+    
+    
+  
+    <h1 class="title">机器学习(1) -- 回归问题</h1>
+  
+
+  </header>
+  
+  <div class="entry">
+    
+      <h2 id="回归问题">回归问题</h2>
+<h3 id="线性回归问题—最小二乘法-">线性回归问题—最小二乘法.</h3>
+<p>在机器学习算法中，通常可以分为回归、聚类、贝叶斯、决策树等问题。而在回归问题中最典型的就是<strong>线性回归(Linear Regression)</strong>，线性回归中常用的方法是<strong>最小二乘法(Ordinary Least Square)</strong>.本篇文章将详细介绍最小二乘法的推导过程，以及应用最小二乘法进行线性回归的例子。</p>
+<p>线性回归属于监督性学习，所谓监督性学习，是指给出一定的训练样本，通过选定特定的机器学习算法，构造假设函数h，根据训练样本求得函数h的参数。那么对于需要解决的问题输入x，经过函数h处理，我们可以得到预测的结果。如下图：</p>
+<p><img src="/img/sup-len-info.png"></p>
+<p>问题的关键在于怎么选择学习算法，构造h函数。对于线性回归问题来说，通常我们有一组变量，用一个列向量<strong>X<sup>T</sup></strong>(或者tX)表示，那就是：</p>
+<pre><code>    tX = [x0, x1, x2, <span class="keyword">...</span> ,xn]      // 通常 x0 = <span class="number">1</span>
+</code></pre><p>训练集中的每个样本都是这样的一个一维的向量，对应的参(系)数向量假设为<strong>C</strong>:</p>
+<pre><code>    C = [c0, c1, c2, <span class="keyword">...</span>, cn]
+</code></pre><p>根据线性回归的定义，我们假定的<strong>h</strong>函数就为<strong>h(x;c) = C<sup>T</sup>X</strong>(此处不明白h这种表示方法的可以看一下概率论的参数估计那一章)</p>
+<pre><code>    h(x;c) = c0 + c1*x1 + c2*x2 + <span class="keyword">...</span> + cn*xn
+</code></pre><p>我们要明白回归问题实质上是对于输入的<strong>X</strong>，尽可能给出准确的预测。事实上，最小二乘法就是这样一个方案，来使得对线性回归的问题预测最优。对于样本集中的每个<strong>x<sub>i</sub></strong>，都有与之对应的<strong>y<sub>i</sub></strong>。最小二乘法就是找出这样一组参数，满足:</p>
+<p><img src="/img/ord-min.png"></p>
+<p>所以为了找到这样一组参数，我们需要采取一系列的策略来达到目的。为了方便，假设函数J(c)满足：</p>
+<p><img src="/img/jc-fun.png"></p>
+
+    
+  </div>
+  <footer>
+    
+      
+      
+    
+    <div class="clearfix"></div>
+  </footer>
+</article>
+
+
+<section id="comment">
+  <h1 class="title">Comments</h1>
+  <div class="ds-thread" data-title="机器学习(1) -- 回归问题">
+  </div>
+</section>
+</div>
+  </div>
+  <footer id="footer"><div class="copyright">
+  
+  &copy; 2015 <a href="/">Clivia</a>
+  
+</div>
+<div class="theme-copyright">
+  Theme by <a href="https://github.com/orderedlist" target="_blank">Yozh</a>
+   | 
+  Redesign by <a href="http://cliviazhou.github.io/" target="_blank">Yozh</a>
+</div>
+<div class="clearfix"></div>
+</footer>
+  <script src="/js/jquery-2.1.0.min.js"></script>
+<script src="/js/scale.fix.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+
+<script type="text/javascript">
+  var duoshuoQuery = { short_name: 'dimensions' };
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';
+    ds.async = true;
+    ds.src = 'http://static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script>
+
+
+
+
+</body>
+</html>
