@@ -1,18 +1,10 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <html>
 <head>
   <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="chrome=1">
   
   <title>Hello World | MathDimensions</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-  
-    <meta name="author" content="Clivia">
-  
-  
-    <meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in trobuleshooting or you can ask me on GitHub.
-Quick">
-  
+  <meta name="viewport" content="width=device-width">
   <meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in trobuleshooting or you can ask me on GitHub.
 Quick">
 <meta property="og:type" content="article">
@@ -27,59 +19,62 @@ Quick">
 Quick">
 
   
-    <link rel="alternate" href="/atom.xml" title="MathDimensions" type="application/atom+xml">
+    <link rel="alternative" href="/atom.xml" title="MathDimensions" type="application/atom+xml">
   
   
-    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="icon" href="/favicon.png">
   
   <link rel="stylesheet" href="/css/style.css" type="text/css">
 
   <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
   
 </head>
-
 <body>
-  <div class="wrapper">
-    <header id="header">
-  <div class="title">
-    <h1><a href="/">MathDimensions</a></h1>
-    <p><a href="/"></a></p>
-  </div>
-  <nav class="nav">
-    <ul>
-      
-        <li><a href="/">Home</a></li>
-      
-        <li><a href="/archives">Archives</a></li>
-      
-      
-        <li><a href="/atom.xml">RSS</a></li>
-      
-    </ul>
-    <div class="clearfix"></div>
-  </nav>
-  <div class="clearfix"></div>
+  <div id="container">
+    <div class="mobile-nav-panel">
+	<i class="icon-reorder icon-large"></i>
+</div>
+<header id="header">
+	<h1 class="blog-title">
+		<a href="/">MathDimensions</a>
+	</h1>
+	<nav class="nav">
+		<ul>
+			<li><a href="/">Home</a></li><li><a href="/archives">Archives</a></li>
+			<li><a id="nav-search-btn" class="nav-icon" title="Search"></a></li>
+			<li><a href="/atom.xml" id="nav-rss-link" class="nav-icon" title="RSS Feed"></a></li>
+		</ul>
+	</nav>
+	<div id="search-form-wrap">
+		<form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><input type="submit" value="&#xF002;" class="search-form-submit"><input type="hidden" name="q" value="site:http://cliviazhou.github.io"></form>
+	</div>
 </header>
-    <div class="content"><article class="post">
-  <header>
-    
-      <div class="icon"></div>
-      <a href="/2014/12/31/hello-world/">
-  <time datetime="2014-12-31T03:11:10.000Z">
-    Dec 31 2014
-  </time>
+    <div id="main">
+      <article id="post-hello-world" class="post">
+	<footer class="entry-meta-header">
+		<span class="meta-elements date">
+			<a href="/2014/12/31/hello-world/" class="article-date">
+  <time datetime="2014-12-31T03:11:10.000Z" itemprop="datePublished">Dec 31 2014</time>
 </a>
-    
-    
+		</span>
+		<span class="meta-elements author">Clivia</span>
+		<div class="commentscount">
+			
+		</div>
+	</footer>
+	
+	<header class="entry-header">
+		
   
-    <h1 class="title">Hello World</h1>
+    <h1 class="article-title entry-title" itemprop="name">
+      Hello World
+    </h1>
   
 
-  </header>
-  
-  <div class="entry">
-    
-      <p>Welcome to <a href="http://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="http://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="http://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">trobuleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
+	</header>
+	<div class="entry-content">
+		
+    	<p>Welcome to <a href="http://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="http://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="http://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">trobuleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
 <h2 id="Quick_Start">Quick Start</h2>
 <h3 id="Create_a_new_post">Create a new post</h3>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
@@ -99,56 +94,70 @@ Quick">
 <p>More info: <a href="http://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
 
     
-  </div>
-  <footer>
+	</div>
+	<footer class="entry-footer">
+		<div class="entry-meta-footer">
+			<span class="category">
+				
+			</span>
+			<span class="tags">
+				
+			</span>
+		</div>
+	</footer>
+	
     
-      
-      
-    
-    <div class="clearfix"></div>
-  </footer>
+<nav id="article-nav">
+  
+    <a href="/2015/01/07/how-do-i-learn-machine-learning/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          How do I learn Machine Learning
+        
+      </div>
+    </a>
+  
+  
+</nav>
+
+  
 </article>
 
 
-<section id="comment">
-  <h1 class="title">Comments</h1>
-  <div class="ds-thread" data-title="Hello World">
-  </div>
-</section>
+
+
+
+    </div>
+    <div class="mb-search">
+  <form action="//google.com/search" method="get" accept-charset="utf-8">
+    <input type="search" name="q" results="0" placeholder="Search">
+    <input type="hidden" name="q" value="site:cliviazhou.github.io">
+  </form>
 </div>
-  </div>
-  <footer id="footer"><div class="copyright">
-  
-  &copy; 2015 <a href="/">Clivia</a>
-  
-</div>
-<div class="theme-copyright">
-  Theme by <a href="https://github.com/orderedlist" target="_blank">Yozh</a>
-   | 
-  Redesign by <a href="http://cliviazhou.github.io/" target="_blank">Yozh</a>
-</div>
-<div class="clearfix"></div>
+<footer id="footer">
+	<h1 class="footer-blog-title">
+		<a href="/">MathDimensions</a>
+	</h1>
+	<span class="copyright">
+		&copy; 2015 Clivia<br>
+		Modify from <a href="http://sanographix.github.io/tumblr/apollo/" target="_blank">Apollo</a> theme, designed by <a href="http://www.sanographix.net/" target="_blank">Here</a><br>
+		Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+	</span>
 </footer>
-  <script src="/js/jquery-2.1.0.min.js"></script>
-<script src="/js/scale.fix.js"></script>
-<script src="/js/jquery.imagesloaded.min.js"></script>
-<script src="/js/gallery.js"></script>
+
+    
+
+<script src="http://cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>
 
 
-<script type="text/javascript">
-  var duoshuoQuery = { short_name: 'dimensions' };
-  (function() {
-    var ds = document.createElement('script');
-    ds.type = 'text/javascript';
-    ds.async = true;
-    ds.src = 'http://static.duoshuo.com/embed.js';
-    ds.charset = 'UTF-8';
-    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ds);
-  })();
-</script>
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
 
 
+<script src="/js/script.js" type="text/javascript"></script>
 
 
+  </div>
 </body>
 </html>

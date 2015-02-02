@@ -1,15 +1,10 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <html>
 <head>
   <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="chrome=1">
   
   <title>Archives: 2015/1 | MathDimensions</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-  
-    <meta name="author" content="Clivia">
-  
-  
+  <meta name="viewport" content="width=device-width">
   <meta name="description">
 <meta property="og:type" content="website">
 <meta property="og:title" content="MathDimensions">
@@ -21,67 +16,64 @@
 <meta name="twitter:description">
 
   
-    <link rel="alternate" href="/atom.xml" title="MathDimensions" type="application/atom+xml">
+    <link rel="alternative" href="/atom.xml" title="MathDimensions" type="application/atom+xml">
   
   
-    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="icon" href="/favicon.png">
   
   <link rel="stylesheet" href="/css/style.css" type="text/css">
 
   <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
   
 </head>
-
 <body>
-  <div class="wrapper">
-    <header id="header">
-  <div class="title">
-    <h1><a href="/">MathDimensions</a></h1>
-    <p><a href="/"></a></p>
-  </div>
-  <nav class="nav">
-    <ul>
-      
-        <li><a href="/">Home</a></li>
-      
-        <li><a href="/archives">Archives</a></li>
-      
-      
-        <li><a href="/atom.xml">RSS</a></li>
-      
-    </ul>
-    <div class="clearfix"></div>
-  </nav>
-  <div class="clearfix"></div>
+  <div id="container">
+    <div class="mobile-nav-panel">
+	<i class="icon-reorder icon-large"></i>
+</div>
+<header id="header">
+	<h1 class="blog-title">
+		<a href="/">MathDimensions</a>
+	</h1>
+	<nav class="nav">
+		<ul>
+			<li><a href="/">Home</a></li><li><a href="/archives">Archives</a></li>
+			<li><a id="nav-search-btn" class="nav-icon" title="Search"></a></li>
+			<li><a href="/atom.xml" id="nav-rss-link" class="nav-icon" title="RSS Feed"></a></li>
+		</ul>
+	</nav>
+	<div id="search-form-wrap">
+		<form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><input type="submit" value="&#xF002;" class="search-form-submit"><input type="hidden" name="q" value="site:http://cliviazhou.github.io"></form>
+	</div>
 </header>
-    <div class="content">
-
-
-<h2 class="archives-title"><span>2015</span></h2>
-
-
-
+    <div id="main">
+      
   
-    <article class="post">
-  <header>
-    
-      <div class="icon"></div>
-      <a href="/2015/01/18/machine-learning-regression/">
-  <time datetime="2015-01-18T09:56:13.000Z">
-    Jan 18 2015
-  </time>
+    <article id="post-machine-learning-regression" class="post">
+	<footer class="entry-meta-header">
+		<span class="meta-elements date">
+			<a href="/2015/01/18/machine-learning-regression/" class="article-date">
+  <time datetime="2015-01-18T09:56:13.000Z" itemprop="datePublished">Jan 18 2015</time>
 </a>
-    
-    
+		</span>
+		<span class="meta-elements author">Clivia</span>
+		<div class="commentscount">
+			
+		</div>
+	</footer>
+	
+	<header class="entry-header">
+		
   
-    <h1 class="title"><a href="/2015/01/18/machine-learning-regression/">机器学习(1) -- 回归问题</a></h1>
+    <h1 itemprop="name" class="entry-title">
+      <a class="article-title" href="/2015/01/18/machine-learning-regression/">机器学习(1) -- 回归问题</a>
+    </h1>
   
 
-  </header>
-  
-  <div class="entry">
-    
-      <h2 id="回归问题">回归问题</h2>
+	</header>
+	<div class="entry-content">
+		
+    	<h2 id="回归问题">回归问题</h2>
 <h3 id="线性回归问题—最小二乘法-">线性回归问题—最小二乘法.</h3>
 <p>在机器学习算法中，通常可以分为回归、聚类、贝叶斯、决策树等问题。而在回归问题中最典型的就是<strong>线性回归(Linear Regression)</strong>，线性回归中常用的方法是<strong>最小二乘法(Ordinary Least Square)</strong>.本篇文章将详细介绍最小二乘法的推导过程，以及应用最小二乘法进行线性回归的例子。</p>
 <p>线性回归属于监督性学习，所谓监督性学习，是指给出一定的训练样本，通过选定特定的机器学习算法，构造假设函数h，根据训练样本求得函数h的参数。那么对于需要解决的问题输入x，经过函数h处理，我们可以得到预测的结果。如下图：</p>
@@ -98,38 +90,52 @@
 <p><img src="/img/jc-fun.png"></p>
 
     
-  </div>
-  <footer class="end-sep">
-    
-      
-      
-    
-    <div class="clearfix"></div>
-  </footer>
+	</div>
+	<footer class="entry-footer">
+		<div class="entry-meta-footer">
+			<span class="category">
+				
+			</span>
+			<span class="tags">
+				
+			</span>
+		</div>
+	</footer>
+	
 </article>
 
 
+	<hr class="article-devider">
+
+
+
+
   
-    <article class="post">
-  <header>
-    
-      <div class="icon"></div>
-      <a href="/2015/01/09/About-this-blog-and-me/">
-  <time datetime="2015-01-09T11:20:14.000Z">
-    Jan 9 2015
-  </time>
+    <article id="post-About-this-blog-and-me" class="post">
+	<footer class="entry-meta-header">
+		<span class="meta-elements date">
+			<a href="/2015/01/09/About-this-blog-and-me/" class="article-date">
+  <time datetime="2015-01-09T11:20:14.000Z" itemprop="datePublished">Jan 9 2015</time>
 </a>
-    
-    
+		</span>
+		<span class="meta-elements author">Clivia</span>
+		<div class="commentscount">
+			
+		</div>
+	</footer>
+	
+	<header class="entry-header">
+		
   
-    <h1 class="title"><a href="/2015/01/09/About-this-blog-and-me/">This blog and me</a></h1>
+    <h1 itemprop="name" class="entry-title">
+      <a class="article-title" href="/2015/01/09/About-this-blog-and-me/">This blog and me</a>
+    </h1>
   
 
-  </header>
-  
-  <div class="entry">
-    
-      <h2 id="Github_pages_and_Hexo">Github pages and Hexo</h2>
+	</header>
+	<div class="entry-content">
+		
+    	<h2 id="Github_pages_and_Hexo">Github pages and Hexo</h2>
 <p>4天时间，从<a href="http://jekyllrb.com" target="_blank" rel="external">jekyll</a>折腾到<a href="http://hexo.io" target="_blank" rel="external">Hexo</a>，算是尘埃落定了。之前的blog是在VPS上搭的LNMP+Wordpress，正如大多数人所吐槽的那样，Wordpress太大了，什么都为你准备好了，实际上可自己折腾的太少了(<del>其实是你不喜欢PHP而已</del>)，而Github Pages相比之下显得简洁、灵活、geek。而且我也不想把VPS仅仅用来搭个博客，既然github提供了免费的空间，而且社区又活跃，为什么不用呢。于是在一番搜索之后得到的结论是，在github在搭建自己的静态博客。我先是选择了jekyll，如果我没理解错的话，一个ruby写的静态页面生成器。之后又在领导桑的推荐下换成了Hexo，但是我发现两者其实并没有差别，只是用了不同的语言写的（后者用的<a href="http://nodejs.org" target="_blank" rel="external">NodeJS</a>）。大概的步骤是：</p>
 <ul>
 <li>我们在本地用Markdown写好页面</li>
@@ -148,38 +154,52 @@
 <p>上段是感性认识。标签化的我是一个爱好日漫的宅男，毕业于中山大学计算机科学与技术专业，程序猿？，爱好数学，崇尚科学。最后是我的<a href="http://weibo.com/2091533737" target="_blank" rel="external">新浪微博</a></p>
 
     
-  </div>
-  <footer class="end-sep">
-    
-      
-      
-    
-    <div class="clearfix"></div>
-  </footer>
+	</div>
+	<footer class="entry-footer">
+		<div class="entry-meta-footer">
+			<span class="category">
+				
+			</span>
+			<span class="tags">
+				
+			</span>
+		</div>
+	</footer>
+	
 </article>
 
 
+	<hr class="article-devider">
+
+
+
+
   
-    <article class="post">
-  <header>
-    
-      <div class="icon"></div>
-      <a href="/2015/01/07/how-do-i-learn-machine-learning/">
-  <time datetime="2015-01-07T08:56:33.000Z">
-    Jan 7 2015
-  </time>
+    <article id="post-how-do-i-learn-machine-learning" class="post">
+	<footer class="entry-meta-header">
+		<span class="meta-elements date">
+			<a href="/2015/01/07/how-do-i-learn-machine-learning/" class="article-date">
+  <time datetime="2015-01-07T08:56:33.000Z" itemprop="datePublished">Jan 7 2015</time>
 </a>
-    
-    
+		</span>
+		<span class="meta-elements author">Clivia</span>
+		<div class="commentscount">
+			
+		</div>
+	</footer>
+	
+	<header class="entry-header">
+		
   
-    <h1 class="title"><a href="/2015/01/07/how-do-i-learn-machine-learning/">How do I learn Machine Learning</a></h1>
+    <h1 itemprop="name" class="entry-title">
+      <a class="article-title" href="/2015/01/07/how-do-i-learn-machine-learning/">How do I learn Machine Learning</a>
+    </h1>
   
 
-  </header>
-  
-  <div class="entry">
-    
-      <h2 id="How_do_I_learn_Machine_Learning?">How do I learn Machine Learning?</h2>
+	</header>
+	<div class="entry-content">
+		
+    	<h2 id="How_do_I_learn_Machine_Learning?">How do I learn Machine Learning?</h2>
 <p>很早在<a href="https://www.quora.com/How-do-I-learn-Machine-Learning-1" target="_blank" rel="external">quora</a>上看到了这个问题，现在有空了，就把这些整理一下，当然要真正掌握Marchine Learning，还是得经过科班训练才行。从MIT，Stanford…到国内的高校，ML都已经成为热门的研究方向。事实上，学术界的热度并不高于工业界，随便上LinkedIn或者国内的招聘网站上搜索ML、DM的职位，需求量仍旧很大。随着像Google，Facebook，国内BAT这些公司“大数据“的产生，不可避免地推动着学术界的研究。</p>
 <p>当然对于一个ML的初学者，扎实的数学功底是必须的，特别是概率统计和线性代数。这里可以提供一些资料：</p>
 <ul>
@@ -192,59 +212,59 @@
 <p>以我目前的认识水平，显然不能再进行下一步了。等我完成了以上训练，或者对机器学习有更加清晰的认识之后，我会继续更新下去。</p>
 
     
-  </div>
-  <footer class="end-sep">
-    
-      
-      
-    
-    <div class="clearfix"></div>
-  </footer>
+	</div>
+	<footer class="entry-footer">
+		<div class="entry-meta-footer">
+			<span class="category">
+				
+			</span>
+			<span class="tags">
+				
+			</span>
+		</div>
+	</footer>
+	
 </article>
 
 
+	<hr class="article-devider">
+
+
+
+
+  
   
 
-  <nav id="pagination">
-  
-  
-  <div class="clearfix"></div>
-</nav>
-
+    </div>
+    <div class="mb-search">
+  <form action="//google.com/search" method="get" accept-charset="utf-8">
+    <input type="search" name="q" results="0" placeholder="Search">
+    <input type="hidden" name="q" value="site:cliviazhou.github.io">
+  </form>
 </div>
-  </div>
-  <footer id="footer"><div class="copyright">
-  
-  &copy; 2015 <a href="/">Clivia</a>
-  
-</div>
-<div class="theme-copyright">
-  Theme by <a href="https://github.com/orderedlist" target="_blank">Yozh</a>
-   | 
-  Redesign by <a href="http://cliviazhou.github.io/" target="_blank">Yozh</a>
-</div>
-<div class="clearfix"></div>
+<footer id="footer">
+	<h1 class="footer-blog-title">
+		<a href="/">MathDimensions</a>
+	</h1>
+	<span class="copyright">
+		&copy; 2015 Clivia<br>
+		Modify from <a href="http://sanographix.github.io/tumblr/apollo/" target="_blank">Apollo</a> theme, designed by <a href="http://www.sanographix.net/" target="_blank">Here</a><br>
+		Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+	</span>
 </footer>
-  <script src="/js/jquery-2.1.0.min.js"></script>
-<script src="/js/scale.fix.js"></script>
-<script src="/js/jquery.imagesloaded.min.js"></script>
-<script src="/js/gallery.js"></script>
+
+    
+
+<script src="http://cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>
 
 
-<script type="text/javascript">
-  var duoshuoQuery = { short_name: 'dimensions' };
-  (function() {
-    var ds = document.createElement('script');
-    ds.type = 'text/javascript';
-    ds.async = true;
-    ds.src = 'http://static.duoshuo.com/embed.js';
-    ds.charset = 'UTF-8';
-    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ds);
-  })();
-</script>
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
 
 
+<script src="/js/script.js" type="text/javascript"></script>
 
 
+  </div>
 </body>
 </html>
