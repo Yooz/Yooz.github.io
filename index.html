@@ -8,7 +8,7 @@
   <meta name="description">
 <meta property="og:type" content="website">
 <meta property="og:title" content="MathDimensions">
-<meta property="og:url" content="http://blog.mathant.com/">
+<meta property="og:url" content="http://blog.yoosan.me/">
 <meta property="og:site_name" content="MathDimensions">
 <meta property="og:description">
 <meta name="twitter:card" content="summary">
@@ -43,11 +43,136 @@
 		</ul>
 	</nav>
 	<div id="search-form-wrap">
-		<form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><input type="submit" value="&#xF002;" class="search-form-submit"><input type="hidden" name="q" value="site:http://blog.mathant.com"></form>
+		<form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><input type="submit" value="&#xF002;" class="search-form-submit"><input type="hidden" name="q" value="site:http://blog.yoosan.me"></form>
 	</div>
 </header>
     <div id="main">
       
+  
+    <article id="post-CS-interviews" class="post">
+	<footer class="entry-meta-header">
+		<span class="meta-elements date">
+			<a href="/2015/03/11/CS-interviews/" class="article-date">
+  <time datetime="2015-03-11T11:31:43.000Z" itemprop="datePublished">Mar 11 2015</time>
+</a>
+		</span>
+		<span class="meta-elements author">Clivia</span>
+		<div class="commentscount">
+			
+				<a href="http://blog.yoosan.me/2015/03/11/CS-interviews/#disqus_thread" class="article-comment-link">Comments</a>
+			
+		</div>
+	</footer>
+	
+	<header class="entry-header">
+		
+  
+    <h1 itemprop="name" class="entry-title">
+      <a class="article-title" href="/2015/03/11/CS-interviews/">程序员面试中遇到的有趣的技术问题</a>
+    </h1>
+  
+
+	</header>
+	<div class="entry-content">
+		
+    	<h4 id="原文来自Quora的一个问题，我觉得很有趣，很多题目很新颖，也能考验一个人的基本功和思维能力。现在把它翻译成中文，并且给出我的个人答案(不一定最好，欢迎讨论)。">原文来自Quora的<a href="http://www.quora.com/What-are-some-interesting-puzzles-asked-in-computer-science-programming-technical-interviews" target="_blank" rel="external">一个问题</a>，我觉得很有趣，很多题目很新颖，也能考验一个人的基本功和思维能力。现在把它翻译成中文，并且给出我的个人答案(不一定最好，欢迎讨论)。</h4>
+<ul>
+<li><p>给出一个unsigned int，用高效的方法求出它的比特数。比如:</p>
+<pre>
+2(10) = 1
+9(1001) = 2
+13(1101) = 3
+</pre>
+我的思路是，通过不断除2，模2判断余数是否为1，如果为1计数器就增加。
+<pre>int countSetBits(unsigned int num){
+      int n = num;
+      int count = 0;
+      while (n){
+        if (n % 2 == 1)
+          cout++;
+        n /= 2;
+      }
+      return count;
+}
+</pre>
+这算法不够高效，既然是对一个二进制的数求比特数，用二进制的操作符更好。于是改进算法，通过每次向右移位(相当于除2)，再通过和1进行'与'运算判断最右一位是否为1。
+<pre>int countSetBits(unsigned int num){
+      int n = num;
+      int count = 0;
+      while (n) {
+        count += n & 1;
+        n >>= 1;
+      }
+      return count;
+}
+</pre>
+以上两种方法是我能想出来的方法了，然后我在答案中看到了另一种解法叫做: Brian Kernighan’s Algorithm。
+<pre>int countSetBits(int num){
+    int n = num;
+    int count = 0;
+    while (n){
+      n &= (n - 1);
+      count ++;
+    }
+}</pre>
+</li>
+<li><p>给出两个字符串，仅使用strstr()函数判断其中一个是否是另一个旋转而来。比如s1 = ABCD, s2 = CDAB, return true; s1 = ABCD, s2 = ACBD, return false;</p>
+<p>  暂时没想出来。</p>
+</li>
+<li><p>添加\<condition>使得下面代码打印出 “HelloWorld”。<br>  <pre><code>if (\<condition>)</condition></code></pre></condition></p>
+<pre><code>  <span class="built_in">printf</span>(<span class="string">"Hello"</span>);
+</code></pre><p>else</p>
+<pre><code>  <span class="built_in">printf</span>(<span class="string">"World"</span>);&lt;/code&gt;&lt;/<span class="keyword">pre</span>&gt;
+</code></pre><p>  简单题，if(!printf(“Hello”))即可。</p>
+</li>
+<li><p>仅允许修改或者增加下面代码中的一个字符，使得程序打印20次*<br>  <pre><code>int main()<br>  {</code></pre></p>
+<pre><code>  <span class="keyword">int</span> <span class="keyword">i</span>, <span class="keyword">n</span> = <span class="number">20</span>;
+  <span class="keyword">for</span> ( <span class="keyword">i</span> = <span class="number">0</span>; <span class="keyword">i</span> &lt; <span class="keyword">n</span>; <span class="keyword">i</span>--)
+      <span class="built_in">printf</span>(<span class="string">"\*"</span>);
+  <span class="keyword">return</span> <span class="number">0</span>;
+</code></pre><p>  }<br>  见过多次的题了。<br>  方法1： for循环里面最后一个i改成n，也就是 n—</p>
+<p>  方法2： for循环里面第二个i前面加上负号，也就是 -i &lt; n </p>
+<p>  方法3： for循环里面第二个条件的&lt;改为+，也就是 i + n</p>
+<p>  欢迎补充</p>
+</li>
+<li><p>设计一个算法逆序一个句子中的所有单词。比如”Today is a nice day”变成”day nice a is Today”.</p>
+<p>很老的题，见过很多次了。</p>
+<p>我的想法就是先逆序整个句子，再分别逆序每个单词。[A B C]<sup>-1</sup> = [C<sup>-1</sup> B<sup>-1</sup> A<sup>-1</sup>]，再对每个子矩阵求逆就变成[C B A]了。</p>
+</li>
+</ul>
+<ul>
+<li><p>给两个鸡蛋，当鸡蛋从x层落下时，不会被摔烂，当高于x层时，鸡蛋就会被摔烂。没被摔破的鸡蛋可以重复使用，请再一个100层的大楼里找出满足条件的最大层数。</p>
+<p>我的想法就是用二分法，虽然这样有可能只试得到两次。然后看到有个<a href="http://www.datagenetics.com/blog/july22012/" target="_blank" rel="external">解法</a>.</p>
+</li>
+<li><p>在C/C++中，用以下方式复制数组是不可行的<br>  <pre><code>int a[10], b[10];</code></pre></p>
+<pre><code>a = b;
+a = GetArrayOfTenElements();<span class="tag">&lt;/<span class="title">code</span>&gt;</span><span class="tag">&lt;/<span class="title">pre</span>&gt;</span>
+</code></pre><p>  你能想出可行方案吗</p>
+</li>
+<li>给出一个8*8的棋盘，计算出子格的个数和矩形的个数吗(每个棋格长宽不一致)</li>
+</ul>
+
+    
+	</div>
+	<footer class="entry-footer">
+		<div class="entry-meta-footer">
+			<span class="category">
+				
+			</span>
+			<span class="tags">
+				
+			</span>
+		</div>
+	</footer>
+	
+</article>
+
+
+	<hr class="article-devider">
+
+
+
+
   
     <article id="post-About-this-blog-and-me" class="post">
 	<footer class="entry-meta-header">
@@ -59,7 +184,7 @@
 		<span class="meta-elements author">Clivia</span>
 		<div class="commentscount">
 			
-				<a href="http://blog.mathant.com/2015/03/01/About-this-blog-and-me/#disqus_thread" class="article-comment-link">Comments</a>
+				<a href="http://blog.yoosan.me/2015/03/01/About-this-blog-and-me/#disqus_thread" class="article-comment-link">Comments</a>
 			
 		</div>
 	</footer>
@@ -125,7 +250,7 @@
 		<span class="meta-elements author">Clivia</span>
 		<div class="commentscount">
 			
-				<a href="http://blog.mathant.com/2015/02/12/not-to-be-a-stupid/#disqus_thread" class="article-comment-link">Comments</a>
+				<a href="http://blog.yoosan.me/2015/02/12/not-to-be-a-stupid/#disqus_thread" class="article-comment-link">Comments</a>
 			
 		</div>
 	</footer>
@@ -185,7 +310,7 @@
 		<span class="meta-elements author">Clivia</span>
 		<div class="commentscount">
 			
-				<a href="http://blog.mathant.com/2015/01/18/machine-learning-regression/#disqus_thread" class="article-comment-link">Comments</a>
+				<a href="http://blog.yoosan.me/2015/01/18/machine-learning-regression/#disqus_thread" class="article-comment-link">Comments</a>
 			
 		</div>
 	</footer>
@@ -249,7 +374,7 @@
 		<span class="meta-elements author">Clivia</span>
 		<div class="commentscount">
 			
-				<a href="http://blog.mathant.com/2015/01/07/how-do-i-learn-machine-learning/#disqus_thread" class="article-comment-link">Comments</a>
+				<a href="http://blog.yoosan.me/2015/01/07/how-do-i-learn-machine-learning/#disqus_thread" class="article-comment-link">Comments</a>
 			
 		</div>
 	</footer>
@@ -309,7 +434,7 @@
 		<span class="meta-elements author">Clivia</span>
 		<div class="commentscount">
 			
-				<a href="http://blog.mathant.com/2014/12/31/hello-world/#disqus_thread" class="article-comment-link">Comments</a>
+				<a href="http://blog.yoosan.me/2014/12/31/hello-world/#disqus_thread" class="article-comment-link">Comments</a>
 			
 		</div>
 	</footer>
@@ -372,7 +497,7 @@
     <div class="mb-search">
   <form action="//baidu.com/search" method="get" accept-charset="utf-8">
     <input type="search" name="q" results="0" placeholder="Search">
-    <input type="hidden" name="q" value="site:blog.mathant.com">
+    <input type="hidden" name="q" value="site:blog.yoosan.me">
   </form>
 </div>
 <footer id="footer">

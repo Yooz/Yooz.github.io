@@ -3,17 +3,44 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Archives: 2015/3 | MathDimensions</title>
+  <title>程序员面试中遇到的有趣的技术问题 | MathDimensions</title>
   <meta name="viewport" content="width=device-width">
-  <meta name="description">
-<meta property="og:type" content="website">
-<meta property="og:title" content="MathDimensions">
-<meta property="og:url" content="http://blog.yoosan.me/archives/2015/03/">
+  <meta name="description" content="原文来自Quora的一个问题，我觉得很有趣，很多题目很新颖，也能考验一个人的基本功和思维能力。现在把它翻译成中文，并且给出我的个人答案(不一定最好，欢迎讨论)。
+
+给出一个unsigned int，用高效的方法求出它的比特数。比如:
+
+2(10) = 1
+9(1001) = 2
+13(1101) = 3
+
+我的思路是，通过不断除2，模2判断余数是否为1，如果为1计数器就增加。
+int countS">
+<meta property="og:type" content="article">
+<meta property="og:title" content="程序员面试中遇到的有趣的技术问题">
+<meta property="og:url" content="http://blog.yoosan.me/2015/03/11/CS-interviews/">
 <meta property="og:site_name" content="MathDimensions">
-<meta property="og:description">
+<meta property="og:description" content="原文来自Quora的一个问题，我觉得很有趣，很多题目很新颖，也能考验一个人的基本功和思维能力。现在把它翻译成中文，并且给出我的个人答案(不一定最好，欢迎讨论)。
+
+给出一个unsigned int，用高效的方法求出它的比特数。比如:
+
+2(10) = 1
+9(1001) = 2
+13(1101) = 3
+
+我的思路是，通过不断除2，模2判断余数是否为1，如果为1计数器就增加。
+int countS">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="MathDimensions">
-<meta name="twitter:description">
+<meta name="twitter:title" content="程序员面试中遇到的有趣的技术问题">
+<meta name="twitter:description" content="原文来自Quora的一个问题，我觉得很有趣，很多题目很新颖，也能考验一个人的基本功和思维能力。现在把它翻译成中文，并且给出我的个人答案(不一定最好，欢迎讨论)。
+
+给出一个unsigned int，用高效的方法求出它的比特数。比如:
+
+2(10) = 1
+9(1001) = 2
+13(1101) = 3
+
+我的思路是，通过不断除2，模2判断余数是否为1，如果为1计数器就增加。
+int countS">
 
   
     <link rel="alternative" href="/atom.xml" title="MathDimensions" type="application/atom+xml">
@@ -47,9 +74,7 @@
 	</div>
 </header>
     <div id="main">
-      
-  
-    <article id="post-CS-interviews" class="post">
+      <article id="post-CS-interviews" class="post">
 	<footer class="entry-meta-header">
 		<span class="meta-elements date">
 			<a href="/2015/03/11/CS-interviews/" class="article-date">
@@ -67,8 +92,8 @@
 	<header class="entry-header">
 		
   
-    <h1 itemprop="name" class="entry-title">
-      <a class="article-title" href="/2015/03/11/CS-interviews/">程序员面试中遇到的有趣的技术问题</a>
+    <h1 class="article-title entry-title" itemprop="name">
+      程序员面试中遇到的有趣的技术问题
     </h1>
   
 
@@ -165,82 +190,33 @@ a = GetArrayOfTenElements();<span class="tag">&lt;/<span class="title">code</spa
 		</div>
 	</footer>
 	
-</article>
-
-
-	<hr class="article-devider">
-
-
-
-
-  
-    <article id="post-About-this-blog-and-me" class="post">
-	<footer class="entry-meta-header">
-		<span class="meta-elements date">
-			<a href="/2015/03/01/About-this-blog-and-me/" class="article-date">
-  <time datetime="2015-03-01T03:15:21.000Z" itemprop="datePublished">Mar 1 2015</time>
-</a>
-		</span>
-		<span class="meta-elements author">Clivia</span>
-		<div class="commentscount">
-			
-				<a href="http://blog.yoosan.me/2015/03/01/About-this-blog-and-me/#disqus_thread" class="article-comment-link">Comments</a>
-			
-		</div>
-	</footer>
-	
-	<header class="entry-header">
-		
-  
-    <h1 itemprop="name" class="entry-title">
-      <a class="article-title" href="/2015/03/01/About-this-blog-and-me/">This blog and me</a>
-    </h1>
-  
-
-	</header>
-	<div class="entry-content">
-		
-    	<h2 id="Github_pages_and_Hexo">Github pages and Hexo</h2>
-<p>4天时间，从<a href="http://jekyllrb.com" target="_blank" rel="external">jekyll</a>折腾到<a href="http://hexo.io" target="_blank" rel="external">Hexo</a>，算是尘埃落定了。之前的blog是在VPS上搭的LNMP+Wordpress，正如大多数人所吐槽的那样，Wordpress太大了，什么都为你准备好了，实际上可自己折腾的太少了(<del>其实是你不喜欢PHP而已</del>)，而Github Pages相比之下显得简洁、灵活、geek。而且我也不想把VPS仅仅用来搭个博客，既然github提供了免费的空间，而且社区又活跃，为什么不用呢。于是在一番搜索之后得到的结论是，在github在搭建自己的静态博客。我先是选择了jekyll，如果我没理解错的话，一个ruby写的静态页面生成器。之后又在领导桑的推荐下换成了Hexo，但是我发现两者其实并没有差别，只是用了不同的语言写的（后者用的<a href="http://nodejs.org" target="_blank" rel="external">NodeJS</a>）。大概的步骤是：</p>
-<ul>
-<li>我们在本地用Markdown写好页面</li>
-<li>通过Hexo（jekyll）渲染，生成HTML</li>
-<li>然后部署到Github Pages上</li>
-</ul>
-<p><em>（如果此处理解有误，还请指出）</em></p>
-<p>关于如何在Github上用Hexo搭建博客，我想你只要在搜索引擎里面里面输入github, hexo, 博客三个关键字，就会有各种各样的教程返回，所以在此我也不想多说。如果遇到什么问题，我倒是乐于帮忙，因我我当时也遇到了一些问题。总之，这个博客的初衷就是：<strong>分享知识</strong>。搭建这样一个博客能提高的技能有：</p>
-<ul>
-<li>Shell 如果你使用UNIX或者Linux操作系统</li>
-<li>Git 如果你有Github，是开源爱好者并且乐于分享</li>
-<li><a href="http://zh.wikipedia.org/wiki/Markdown" target="_blank" rel="external">Markdown</a> 如果你不堪忍受Word的排版</li>
-</ul>
-<h2 id="About_me">About me</h2>
-<p>任何人都没法完整客观地评价自己，我也不会评价自己，也并不知道在别人眼中我是什么样的人。在经历了二十来年之后，我好像有所领悟。2014年对我来说是非常重要的一年，就如同十一届三中全会在新中国的地位一样。我思想发生了很大的变化，更重要的是，用实际行动践行。未来不可预知，但希望未来的我是这样一个人：理性、冷静、专注、成熟又不失风度。当然做到这些还有一段路要走。</p>
-<p>上段是感性认识。标签化的我是一个爱好日漫的宅男，就读计算机科学专业，程序猿？爱好数学，崇尚科学。最后是我的<a href="http://weibo.com/2091533737" target="_blank" rel="external">新浪微博</a></p>
-
     
-	</div>
-	<footer class="entry-footer">
-		<div class="entry-meta-footer">
-			<span class="category">
-				
-			</span>
-			<span class="tags">
-				
-			</span>
-		</div>
-	</footer>
-	
+<nav id="article-nav">
+  
+  
+    <a href="/2015/03/01/About-this-blog-and-me/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">
+        
+          This blog and me
+        
+      </div>
+    </a>
+  
+</nav>
+
+  
 </article>
 
 
-	<hr class="article-devider">
 
 
+<section id="comments">
+  <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </div>
+</section>
 
-
-  
-  
 
     </div>
     <div class="mb-search">
@@ -264,11 +240,13 @@ a = GetArrayOfTenElements();<span class="tag">&lt;/<span class="title">code</spa
 <script>
   var disqus_shortname = 'yosezhou';
   
+  var disqus_url = 'http://blog.yoosan.me/2015/03/11/CS-interviews/';
+  
   (function(){
     var dsq = document.createElement('script');
     dsq.type = 'text/javascript';
     dsq.async = true;
-    dsq.src = '//go.disqus.com/count.js';
+    dsq.src = '//go.disqus.com/embed.js';
     (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
   })();
 </script>
