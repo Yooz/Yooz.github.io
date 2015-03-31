@@ -1,415 +1,817 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html class="theme-next use-motion theme-next-next">
 <head>
-  <meta charset="utf-8">
   
-  <title>MathDimensions</title>
-  <meta name="viewport" content="width=device-width">
-  <meta name="description">
-<meta property="og:type" content="website">
-<meta property="og:title" content="MathDimensions">
-<meta property="og:url" content="http://blog.yoosan.me/">
-<meta property="og:site_name" content="MathDimensions">
-<meta property="og:description">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="MathDimensions">
-<meta name="twitter:description">
 
-  
-    <link rel="alternative" href="/atom.xml" title="MathDimensions" type="application/atom+xml">
-  
-  
-    <link rel="icon" href="/favicon.png">
-  
-  <link rel="stylesheet" href="/css/style.css" type="text/css">
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 
-  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
-  
+
+
+
+  <link rel="stylesheet" type="text/css" href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5"/>
+
+
+<link rel="stylesheet" type="text/css" href="/css/main.css?v=0.4.0"/>
+
+
+
+
+
+    <meta name="keywords" content="math,machine learning, artificial intelligence" />
+
+
+
+
+
+    <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.4.0" />
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?887f2cb612ca4c821456b587231e77fd";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+  <title> MathDimensions </title>
 </head>
+
 <body>
-  <div id="container">
-    <div class="mobile-nav-panel">
-	<i class="icon-reorder icon-large"></i>
-</div>
-<header id="header">
-	<h1 class="blog-title">
-		<a href="/">MathDimensions</a>
-	</h1>
-	<nav class="nav">
-		<ul>
-			<li><a href="/">Home</a></li><li><a href="/archives">Archives</a></li>
-			<li><a id="nav-search-btn" class="nav-icon" title="Search"></a></li>
-			<li><a href="/atom.xml" id="nav-rss-link" class="nav-icon" title="RSS Feed"></a></li>
-		</ul>
-	</nav>
-	<div id="search-form-wrap">
-		<form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><input type="submit" value="&#xF002;" class="search-form-submit"><input type="hidden" name="q" value="site:http://blog.yoosan.me"></form>
-	</div>
-</header>
-    <div id="main">
+  <div class="container one-column 
+   page-home 
+">
+    <div class="headband"></div>
+
+    <div id="header" class="header">
+      <div class="header-inner">
+        <h1 class="site-meta">
+  <span class="logo-line-before"><i></i></span>
+  <a href="/" class="brand">
+      <span class="logo">
+        <i class="icon-logo"></i>
+      </span>
+      <span class="site-title">MathDimensions</span>
+  </a>
+  <span class="logo-line-after"><i></i></span>
+</h1>
+
+
+  <ul id="menu" class="menu">
+    
       
-  
-    <article id="post-About-this-blog-and-me" class="post">
-	<footer class="entry-meta-header">
-		<span class="meta-elements date">
-			<a href="/2015/03/01/About-this-blog-and-me/" class="article-date">
-  <time datetime="2015-03-01T03:15:21.000Z" itemprop="datePublished">Mar 1 2015</time>
-</a>
-		</span>
-		<span class="meta-elements author">Clivia</span>
-		<div class="commentscount">
-			
-				<a href="http://blog.yoosan.me/2015/03/01/About-this-blog-and-me/#disqus_thread" class="article-comment-link">Comments</a>
-			
-		</div>
-	</footer>
-	
-	<header class="entry-header">
-		
-  
-    <h1 itemprop="name" class="entry-title">
-      <a class="article-title" href="/2015/03/01/About-this-blog-and-me/">This blog and me</a>
-    </h1>
-  
+      <li class="menu-item menu-item-home">
+        <a href="/">
+          <i class="menu-item-icon icon-home"></i> <br />
+          Home
+        </a>
+      </li>
+    
+      
+      <li class="menu-item menu-item-archives">
+        <a href="/archives">
+          <i class="menu-item-icon icon-archives"></i> <br />
+          Archives
+        </a>
+      </li>
+    
+      
+      <li class="menu-item menu-item-tags">
+        <a href="/tags">
+          <i class="menu-item-icon icon-tags"></i> <br />
+          Tags
+        </a>
+      </li>
+    
+  </ul>
 
-	</header>
-	<div class="entry-content">
-		
-    	<h2 id="Github_pages_and_Hexo">Github pages and Hexo</h2>
-<p>4天时间，从<a href="http://jekyllrb.com" target="_blank" rel="external">jekyll</a>折腾到<a href="http://hexo.io" target="_blank" rel="external">Hexo</a>，算是尘埃落定了。之前的blog是在VPS上搭的LNMP+Wordpress，正如大多数人所吐槽的那样，Wordpress太大了，什么都为你准备好了，实际上可自己折腾的太少了(<del>其实是你不喜欢PHP而已</del>)，而Github Pages相比之下显得简洁、灵活、geek。而且我也不想把VPS仅仅用来搭个博客，既然github提供了免费的空间，而且社区又活跃，为什么不用呢。于是在一番搜索之后得到的结论是，在github在搭建自己的静态博客。我先是选择了jekyll，如果我没理解错的话，一个ruby写的静态页面生成器。之后又在领导桑的推荐下换成了Hexo，但是我发现两者其实并没有差别，只是用了不同的语言写的（后者用的<a href="http://nodejs.org" target="_blank" rel="external">NodeJS</a>）。大概的步骤是：</p>
-<ul>
-<li>我们在本地用Markdown写好页面</li>
-<li>通过Hexo（jekyll）渲染，生成HTML</li>
-<li>然后部署到Github Pages上</li>
-</ul>
-<p><em>（如果此处理解有误，还请指出）</em></p>
-<p>关于如何在Github上用Hexo搭建博客，我想你只要在搜索引擎里面里面输入github, hexo, 博客三个关键字，就会有各种各样的教程返回，所以在此我也不想多说。如果遇到什么问题，我倒是乐于帮忙，因我我当时也遇到了一些问题。总之，这个博客的初衷就是：<strong>分享知识</strong>。搭建这样一个博客能提高的技能有：</p>
-<ul>
-<li>Shell 如果你使用UNIX或者Linux操作系统</li>
-<li>Git 如果你有Github，是开源爱好者并且乐于分享</li>
-<li><a href="http://zh.wikipedia.org/wiki/Markdown" target="_blank" rel="external">Markdown</a> 如果你不堪忍受Word的排版</li>
-</ul>
-<h2 id="About_me">About me</h2>
-<p>任何人都没法完整客观地评价自己，我也不会评价自己，也并不知道在别人眼中我是什么样的人。在经历了二十来年之后，我好像有所领悟。2014年对我来说是非常重要的一年，就如同十一届三中全会在新中国的地位一样。我思想发生了很大的变化，更重要的是，用实际行动践行。未来不可预知，但希望未来的我是这样一个人：理性、冷静、专注、成熟又不失风度。当然做到这些还有一段路要走。</p>
-<p>上段是感性认识。标签化的我是一个爱好日漫的宅男，就读计算机科学专业，程序猿？爱好数学，崇尚科学。最后是我的<a href="http://weibo.com/2091533737" target="_blank" rel="external">新浪微博</a></p>
+
+      </div>
+    </div>
+
+    <div id="main" class="main">
+      <div class="main-inner">
+        <div id="content" class="content">
+          
+            
+          
+
+          <div id="posts" class="posts-expand">
+            
+  
+    
+
+  <div class="post post-type-normal ">
+    <div class="post-header">
+
+      
+      
+        <h1 class="post-title">
+          
+          
+            
+              <a class="post-title-link" href="/2015/01/20/machine-learning-regression/">
+                机器学习(1) -- 回归问题
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          
+            Posted on 2015-01-19
+          
+        </span>
+
+        
+          
+            <span class="post-category">
+              &nbsp; | &nbsp; In
+              
+                <a href="/categories/learn/">learn</a>
+
+                
+                
+
+              
+            </span>
+          
+        
+
+        
+          
+            <span class="post-comments-count">
+            &nbsp; | &nbsp;
+            <a href="/2015/01/20/machine-learning-regression/#comments" >
+              <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2015/01/20/machine-learning-regression/"></span>
+            </a>
+          </span>
+          
+        
+      </div>
+    </div>
 
     
-	</div>
-	<footer class="entry-footer">
-		<div class="entry-meta-footer">
-			<span class="category">
-				
-			</span>
-			<span class="tags">
-				
-			</span>
-		</div>
-	</footer>
-	
-</article>
+      <div class="post-body">
 
+        
+        
 
-	<hr class="article-devider">
-
-
-
-
-  
-    <article id="post-not-to-be-a-stupid" class="post">
-	<footer class="entry-meta-header">
-		<span class="meta-elements date">
-			<a href="/2015/02/12/not-to-be-a-stupid/" class="article-date">
-  <time datetime="2015-02-12T09:56:55.000Z" itemprop="datePublished">Feb 12 2015</time>
-</a>
-		</span>
-		<span class="meta-elements author">Clivia</span>
-		<div class="commentscount">
-			
-				<a href="http://blog.yoosan.me/2015/02/12/not-to-be-a-stupid/#disqus_thread" class="article-comment-link">Comments</a>
-			
-		</div>
-	</footer>
-	
-	<header class="entry-header">
-		
-  
-    <h1 itemprop="name" class="entry-title">
-      <a class="article-title" href="/2015/02/12/not-to-be-a-stupid/">成为一个不愚蠢的人</a>
-    </h1>
-  
-
-	</header>
-	<div class="entry-content">
-		
-    	<h2 id="成为一个不愚蠢的人">成为一个不愚蠢的人</h2>
-<p>起先，我想把标题起为“成为一个相对聪明的人”，但是想了想觉得不妥。首先，“相对”是一种不确定性的说法，而“聪明”也无从定义，那么“不愚蠢”就是一个尽可能客观的说法了。事实上，成为一个不愚蠢的人也很困难。如果你认真审查这个世界，你会发现90%的人都是愚蠢的，说这种话有点“纳粹精英主义”的嫌疑。但在我看来，事实就是如此。很多时候，我都会觉得自己是个彻头彻尾的蠢货，反过来，我也为自己能意识到这一点感到庆幸。</p>
-<p>所以我想成为一个不愚蠢的人，不愚蠢的人是什么样的 — 有明确的人生目标，清晰的人生规划，理性的思维以及坚定的执行力。当然，这只是我价值观里的不愚蠢的人，我的身边有不少这样的人，这样的结论也是我通过观察他们的行为得出来的。环境对人的影响是巨大的，美国某杂志有篇文章研究了”<a href="http://en.wikipedia.org/wiki/Peer_pressure" target="_blank" rel="external">peer pressure</a>“对人的影响，对它的结论我深信不疑，为了不和蠢货打交道，最好去一个大家都不蠢的环境中。</p>
-<h2 id="远离社交网络">远离社交网络</h2>
-<p>同样，那篇文章中也提到了社交网络的影响，流言在社交网络上肆意传播，而不同成长环境，不同教育背景，不同人生经历的人分辨信息的能力是不同的。为了是自己不变的那么愚蠢，一个不错的办法是远离社交网络。离开了社交网络，真正关心你的朋友仍会关心你，而对于无关紧要的人，也不会有任何影响。远离社交网络和使用社交工具并不是冲突的，它们是不同的概念。</p>
-<p>我更倾向于把一段时间的经历做一个总结，就想现在这样，而不是把一些鸡毛蒜皮的事都展现在社交网络中，后者会引起大部分人的反感。在写文章的时候，我会时刻反驳自己的观点，经过推理和反思，以确保我的观点具有“时限性“的说服力。原因在于，说不定几年后的自己会感概，“我原来说过那么傻逼的话”。</p>
-<h2 id="专注比努力和认真重要">专注比努力和认真重要</h2>
-<p>“认真”“努力”和“专注”，这三个词都是来自于大学里一个我非常佩服的同学的签名。事实上，他也做到了。一开始，我并没有在意，直到我看到过结果，他获得了Google的工作。结果是最能说明这条理论是否适用的标准。对于我来说，专注是我最缺少的一种品质。努力和认真，我是可以做到的，实际我也做到了。我明白自己的问题在哪里，我是这样一个人，对于感兴趣的事情，我会想法设法完成它，结果就是我确实完成了。但是完成之后，我就失去了对这件事情的兴趣，转而投向下一个目标。这就类似与<a href="http://en.wikipedia.org/wiki/Breadth-first_search" target="_blank" rel="external">BFS</a>还是<a href="http://en.wikipedia.org/wiki/Depth-first_search" target="_blank" rel="external">DFS</a>，大部分情况下，BFS比DFS好用，但是，困难的问题，都是DFS解决的。而且，在学术科研领域，更需要的就是专注。我会努力训练这方面的能力。</p>
-<h2 id="保持清醒保持孤独">保持清醒保持孤独</h2>
-<p>2014年2月-2015年2月，这一年的时间我思考了很多，也实践了很多。保持清醒和孤独，能让我时刻反思自己。对于未来，我却还是不敢明确，在结果没有出来之前，再多的假想都是多余。</p>
-<p><code>2015年2月11日</code></p>
-
-    
-	</div>
-	<footer class="entry-footer">
-		<div class="entry-meta-footer">
-			<span class="category">
-				
-			</span>
-			<span class="tags">
-				
-			</span>
-		</div>
-	</footer>
-	
-</article>
-
-
-	<hr class="article-devider">
-
-
-
-
-  
-    <article id="post-machine-learning-regression" class="post">
-	<footer class="entry-meta-header">
-		<span class="meta-elements date">
-			<a href="/2015/01/18/machine-learning-regression/" class="article-date">
-  <time datetime="2015-01-18T09:56:13.000Z" itemprop="datePublished">Jan 18 2015</time>
-</a>
-		</span>
-		<span class="meta-elements author">Clivia</span>
-		<div class="commentscount">
-			
-				<a href="http://blog.yoosan.me/2015/01/18/machine-learning-regression/#disqus_thread" class="article-comment-link">Comments</a>
-			
-		</div>
-	</footer>
-	
-	<header class="entry-header">
-		
-  
-    <h1 itemprop="name" class="entry-title">
-      <a class="article-title" href="/2015/01/18/machine-learning-regression/">机器学习(1) -- 回归问题</a>
-    </h1>
-  
-
-	</header>
-	<div class="entry-content">
-		
-    	<h2 id="回归问题">回归问题</h2>
+        
+          
+            <h2 id="回归问题">回归问题</h2>
 <h3 id="线性回归问题—最小二乘法-">线性回归问题—最小二乘法.</h3>
-<p>在机器学习算法中，通常可以分为回归、聚类、贝叶斯、决策树等问题。而在回归问题中最典型的就是<strong>线性回归(Linear Regression)</strong>，线性回归中常用的方法是<strong>最小二乘法(Ordinary Least Square)</strong>.本篇文章将详细介绍最小二乘法的推导过程，以及应用最小二乘法进行线性回归的例子。</p>
-<p>线性回归属于监督性学习，所谓监督性学习，是指给出一定的训练样本，通过选定特定的机器学习算法，构造假设函数h，根据训练样本求得函数h的参数。那么对于需要解决的问题输入x，经过函数h处理，我们可以得到预测的结果。如下图：</p>
-<p><img src="/img/sup-len-info.png"></p>
-<p>问题的关键在于怎么选择学习算法，构造h函数。对于线性回归问题来说，通常我们有一组变量，用一个列向量<strong>X<sup>T</sup></strong>(或者tX)表示，那就是：</p>
-<pre><code>    tX = [x0, x1, x2, <span class="keyword">...</span> ,xn]      // 通常 x0 = <span class="number">1</span>
-</code></pre><p>训练集中的每个样本都是这样的一个一维的向量，对应的参(系)数向量假设为<strong>C</strong>:</p>
-<pre><code>    C = [c0, c1, c2, <span class="keyword">...</span>, cn]
-</code></pre><p>根据线性回归的定义，我们假定的<strong>h</strong>函数就为<strong>h(x;c) = C<sup>T</sup>X</strong>(此处不明白h这种表示方法的可以看一下概率论的参数估计那一章)</p>
-<pre><code>    h(x;c) = c0 + c1*x1 + c2*x2 + <span class="keyword">...</span> + cn*xn
-</code></pre><p>我们要明白回归问题实质上是对于输入的<strong>X</strong>，尽可能给出准确的预测。事实上，最小二乘法就是这样一个方案，来使得对线性回归的问题预测最优。对于样本集中的每个<strong>x<sub>i</sub></strong>，都有与之对应的<strong>y<sub>i</sub></strong>。最小二乘法就是找出这样一组参数，满足:</p>
-<p><img src="/img/ord-min.png"></p>
-<p>所以为了找到这样一组参数，我们需要采取一系列的策略来达到目的。为了方便，假设函数J(c)满足：</p>
-<p><img src="/img/jc-fun.png"></p>
+<p>在机器学习算法中，通常可以分为回归、聚类、贝叶斯、决策树等问题。而在回归问题中最典型的就是<strong>线性回归(Linear Regression)</strong>，线性回归中常用的方法是<strong>最小二乘法(Ordinary Least Square)</strong>.本篇文章将详细介绍最小二乘法的推导过程，以及应用最小二乘法进行线性回归的例子。<br>
+            <div class="post-more-link text-center">
+              <a class="btn" href="/2015/01/20/machine-learning-regression/">
+                Read more &raquo;
+              </a>
+            </div>
+          
+        
+      </div>
+    
 
     
-	</div>
-	<footer class="entry-footer">
-		<div class="entry-meta-footer">
-			<span class="category">
-				
-			</span>
-			<span class="tags">
-				
-			</span>
-		</div>
-	</footer>
-	
-</article>
+      <div class="post-footer">
+        
+          <div class="post-tags">
+            
+              <a href="/public/tags/machine-learning-regression/">
+                #machine-learning, regression
+              </a>
+            
+          </div>
+        
 
+        
 
-	<hr class="article-devider">
-
-
+        
+        
+          <div class="post-eof"></div>
+        
+      </div>
+    
+  </div>
 
 
   
-    <article id="post-how-do-i-learn-machine-learning" class="post">
-	<footer class="entry-meta-header">
-		<span class="meta-elements date">
-			<a href="/2015/01/07/how-do-i-learn-machine-learning/" class="article-date">
-  <time datetime="2015-01-07T08:56:33.000Z" itemprop="datePublished">Jan 7 2015</time>
-</a>
-		</span>
-		<span class="meta-elements author">Clivia</span>
-		<div class="commentscount">
-			
-				<a href="http://blog.yoosan.me/2015/01/07/how-do-i-learn-machine-learning/#disqus_thread" class="article-comment-link">Comments</a>
-			
-		</div>
-	</footer>
-	
-	<header class="entry-header">
-		
-  
-    <h1 itemprop="name" class="entry-title">
-      <a class="article-title" href="/2015/01/07/how-do-i-learn-machine-learning/">How do I learn Machine Learning</a>
-    </h1>
-  
+    
 
-	</header>
-	<div class="entry-content">
-		
-    	<h2 id="How_do_I_learn_Machine_Learning?">How do I learn Machine Learning?</h2>
-<p>很早在<a href="https://www.quora.com/How-do-I-learn-Machine-Learning-1" target="_blank" rel="external">quora</a>上看到了这个问题，现在有空了，就把这些整理一下，当然要真正掌握Marchine Learning，还是得经过科班训练才行。从MIT，Stanford…到国内的高校，ML都已经成为热门的研究方向。事实上，学术界的热度并不高于工业界，随便上LinkedIn或者国内的招聘网站上搜索ML、DM的职位，需求量仍旧很大。随着像Google，Facebook，国内BAT这些公司“大数据“的产生，不可避免地推动着学术界的研究。</p>
-<p>当然对于一个ML的初学者，扎实的数学功底是必须的，特别是概率统计和线性代数。这里可以提供一些资料：</p>
-<ul>
-<li><a href="http://ocw.mit.edu/courses/mathematics/18-06-linear-algebra-spring-2010/video-lectures/" target="_blank" rel="external">Linear Algebra</a> and <a href="https://www.khanacademy.org/math/linear-algebra" target="_blank" rel="external">Online lecture</a></li>
-<li><a href="https://www.khanacademy.org/math/probability" target="_blank" rel="external">Probability and Statistics</a> , <a href="http://book.douban.com/subject/1771053/" target="_blank" rel="external">Probability Theory</a> or <a href="https://statistics.stanford.edu/~tibs/ElemStatLearn/" target="_blank" rel="external">Elements of Statistical Learning</a></li>
-<li><a href="https://www.khanacademy.org/math/multivariable-calculus" target="_blank" rel="external">Multivariable calculus</a> or <a href="http://ocw.mit.edu/courses/mathematics/18-02sc-multivariable-calculus-fall-2010/index.htm" target="_blank" rel="external">this calculus</a> and <a href="http://web.stanford.edu/class/ee364a/videos.html" target="_blank" rel="external">Optimization</a></li>
-</ul>
-<p>总之，概率统计，线性代数和多元积分学等基础知识要掌握。接着就是被大家广为熟知的<a href="http://cs.stanford.edu/people/ang/" target="_blank" rel="external">Andrew Ng</a>的<a href="http://v.163.com/special/opencourse/machinelearning.html" target="_blank" rel="external">机器学习公开课</a> 或者<a href="https://class.coursera.org/machlearning-001/lecture/preview" target="_blank" rel="external">另一个机器学习公开课</a>以及<a href="https://www.coursera.org/course/nlangp" target="_blank" rel="external">NLP</a>。</p>
-<p>学习理论是不够的，各路大牛们都在推荐<a href="http://www.kaggle.com" target="_blank" rel="external">kaggle</a>竞赛。这里有几个相关的推荐<a href="http://www.slate.com/articles/health_and_science/new_scientist/2012/12/kaggle_president_jeremy_howard_amateurs_beat_specialists_in_data_prediction.html" target="_blank" rel="external">[1]</a><a href="https://us.pycon.org/2014/schedule/presentation/61/" target="_blank" rel="external">[2]</a>。知乎上也有人回答了<a href="http://www.zhihu.com/question/24533374" target="_blank" rel="external">kaggle比赛的收获和细节</a>。</p>
-<p>以我目前的认识水平，显然不能再进行下一步了。等我完成了以上训练，或者对机器学习有更加清晰的认识之后，我会继续更新下去。</p>
+  <div class="post post-type-normal ">
+    <div class="post-header">
+
+      
+      
+        <h1 class="post-title">
+          
+          
+            
+              <a class="post-title-link" href="/2015/01/01/how-do-i-learn-machine-learning/">
+                How do I learn Machine Learning
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          
+            Posted on 2014-12-31
+          
+        </span>
+
+        
+          
+            <span class="post-category">
+              &nbsp; | &nbsp; In
+              
+                <a href="/categories/learn/">learn</a>
+
+                
+                
+
+              
+            </span>
+          
+        
+
+        
+          
+            <span class="post-comments-count">
+            &nbsp; | &nbsp;
+            <a href="/2015/01/01/how-do-i-learn-machine-learning/#comments" >
+              <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2015/01/01/how-do-i-learn-machine-learning/"></span>
+            </a>
+          </span>
+          
+        
+      </div>
+    </div>
 
     
-	</div>
-	<footer class="entry-footer">
-		<div class="entry-meta-footer">
-			<span class="category">
-				
-			</span>
-			<span class="tags">
-				
-			</span>
-		</div>
-	</footer>
-	
-</article>
+      <div class="post-body">
 
+        
+        
 
-	<hr class="article-devider">
-
-
-
-
-  
-    <article id="post-hello-world" class="post">
-	<footer class="entry-meta-header">
-		<span class="meta-elements date">
-			<a href="/2014/12/31/hello-world/" class="article-date">
-  <time datetime="2014-12-31T03:11:10.000Z" itemprop="datePublished">Dec 31 2014</time>
-</a>
-		</span>
-		<span class="meta-elements author">Clivia</span>
-		<div class="commentscount">
-			
-				<a href="http://blog.yoosan.me/2014/12/31/hello-world/#disqus_thread" class="article-comment-link">Comments</a>
-			
-		</div>
-	</footer>
-	
-	<header class="entry-header">
-		
-  
-    <h1 itemprop="name" class="entry-title">
-      <a class="article-title" href="/2014/12/31/hello-world/">Hello World</a>
-    </h1>
-  
-
-	</header>
-	<div class="entry-content">
-		
-    	<p>Welcome to <a href="http://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="http://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="http://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">trobuleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick_Start">Quick Start</h2>
-<h3 id="Create_a_new_post">Create a new post</h3>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
-
-<p>More info: <a href="http://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run_server">Run server</h3>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
-
-<p>More info: <a href="http://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate_static_files">Generate static files</h3>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
-
-<p>More info: <a href="http://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy_to_remote_sites">Deploy to remote sites</h3>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
-
-<p>More info: <a href="http://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
+        
+          
+            <h2 id="How_do_I_learn_Machine_Learning?">How do I learn Machine Learning?</h2>
+<p>很早在<a href="https://www.quora.com/How-do-I-learn-Machine-Learning-1" target="_blank" rel="external">quora</a>上看到了这个问题，现在有空了，就把这些整理一下，当然要真正掌握Marchine Learning，还是得经过科班训练才行。从MIT，Stanford…到国内的高校，ML都已经成为热门的研究方向。事实上，学术界的热度并不高于工业界，随便上LinkedIn或者国内的招聘网站上搜索ML、DM的职位，需求量仍旧很大。随着像Google，Facebook，国内BAT这些公司“大数据“的产生，不可避免地推动着学术界的研究。<br>
+            <div class="post-more-link text-center">
+              <a class="btn" href="/2015/01/01/how-do-i-learn-machine-learning/">
+                Read more &raquo;
+              </a>
+            </div>
+          
+        
+      </div>
+    
 
     
-	</div>
-	<footer class="entry-footer">
-		<div class="entry-meta-footer">
-			<span class="category">
-				
-			</span>
-			<span class="tags">
-				
-			</span>
-		</div>
-	</footer>
-	
-</article>
+      <div class="post-footer">
+        
+          <div class="post-tags">
+            
+              <a href="/public/tags/machine-learning/">
+                #machine-learning
+              </a>
+            
+          </div>
+        
 
+        
 
-	<hr class="article-devider">
-
-
+        
+        
+          <div class="post-eof"></div>
+        
+      </div>
+    
+  </div>
 
 
   
+    
+
+  <div class="post post-type-normal ">
+    <div class="post-header">
+
+      
+      
+        <h1 class="post-title">
+          
+          
+            
+              <a class="post-title-link" href="/2014/12/28/not-to-be-a-stupid/">
+                成为一个不愚蠢的人
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          
+            Posted on 2014-12-27
+          
+        </span>
+
+        
+          
+            <span class="post-category">
+              &nbsp; | &nbsp; In
+              
+                <a href="/categories/life/">life</a>
+
+                
+                
+
+              
+            </span>
+          
+        
+
+        
+          
+            <span class="post-comments-count">
+            &nbsp; | &nbsp;
+            <a href="/2014/12/28/not-to-be-a-stupid/#comments" >
+              <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2014/12/28/not-to-be-a-stupid/"></span>
+            </a>
+          </span>
+          
+        
+      </div>
+    </div>
+
+    
+      <div class="post-body">
+
+        
+        
+
+        
+          
+            <h2 id="成为一个不愚蠢的人">成为一个不愚蠢的人</h2>
+<p>起先，我想把标题起为“成为一个相对聪明的人”，但是想了想觉得不妥。首先，“相对”是一种不确定性的说法，而“聪明”也无从定义，那么“不愚蠢”就是一个尽可能客观的说法了。事实上，成为一个不愚蠢的人也很困难。如果你认真审查这个世界，你会发现90%的人都是愚蠢的，说这种话有点“纳粹精英主义”的嫌疑。但在我看来，事实就是如此。很多时候，我都会觉得自己是个彻头彻尾的蠢货，反过来，我也为自己能意识到这一点感到庆幸。<br>
+            <div class="post-more-link text-center">
+              <a class="btn" href="/2014/12/28/not-to-be-a-stupid/">
+                Read more &raquo;
+              </a>
+            </div>
+          
+        
+      </div>
+    
+
+    
+      <div class="post-footer">
+        
+          <div class="post-tags">
+            
+              <a href="/public/tags/thinking/">
+                #thinking
+              </a>
+            
+          </div>
+        
+
+        
+
+        
+        
+          <div class="post-eof"></div>
+        
+      </div>
+    
+  </div>
+
+
   
+    
+
+  <div class="post post-type-normal ">
+    <div class="post-header">
+
+      
+      
+        <h1 class="post-title">
+          
+          
+            
+              <a class="post-title-link" href="/2014/12/28/About-this-blog-and-me/">
+                This blog and me
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          
+            Posted on 2014-12-27
+          
+        </span>
+
+        
+          
+            <span class="post-category">
+              &nbsp; | &nbsp; In
+              
+                <a href="/categories/life/">life</a>
+
+                
+                
+
+              
+            </span>
+          
+        
+
+        
+          
+            <span class="post-comments-count">
+            &nbsp; | &nbsp;
+            <a href="/2014/12/28/About-this-blog-and-me/#comments" >
+              <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2014/12/28/About-this-blog-and-me/"></span>
+            </a>
+          </span>
+          
+        
+      </div>
+    </div>
+
+    
+      <div class="post-body">
+
+        
+        
+
+        
+          
+            <h2 id="Github_pages_and_Hexo">Github pages and Hexo</h2>
+<p>4天时间，从<a href="http://jekyllrb.com" target="_blank" rel="external">jekyll</a>折腾到<a href="http://hexo.io" target="_blank" rel="external">Hexo</a>，算是尘埃落定了。
+            <div class="post-more-link text-center">
+              <a class="btn" href="/2014/12/28/About-this-blog-and-me/">
+                Read more &raquo;
+              </a>
+            </div>
+          
+        
+      </div>
+    
+
+    
+      <div class="post-footer">
+        
+          <div class="post-tags">
+            
+              <a href="/public/tags/personal/">
+                #personal
+              </a>
+            
+          </div>
+        
+
+        
+
+        
+        
+          <div class="post-eof"></div>
+        
+      </div>
+    
+  </div>
+
+
+  
+
+          </div>
+
+          
+        </div>
+
+        
+<div class="sidebar-toggle">
+  <div class="sidebar-toggle-line-wrap">
+    <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+    <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+    <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+  </div>
+</div>
+
+<div id="sidebar" class="sidebar">
+  <div class="sidebar-inner">
+
+    
+
+    <div class="site-overview">
+      <div class="site-author motion-element">
+        <img class="site-author-image" src="/images/default_avatar.jpg" alt="yoosan" />
+        <p class="site-author-name">yoosan</p>
+      </div>
+      <p class="site-description motion-element"></p>
+      <div class="site-state motion-element">
+        <div class="site-state-item site-state-posts">
+          <span class="site-state-item-count">4</span>
+          <span class="site-state-item-name">posts</span>
+        </div>
+        <div class="site-state-item site-state-tags">
+            <span class="site-state-item-count">4</span>
+            <span class="site-state-item-name">tags</span>
+        </div>
+        <div class="site-state-item site-state-pages">
+            <span class="site-state-item-count">0</span>
+            <span class="site-state-item-name">pages</span>
+        </div>
+      </div>
+
+      
+
+      <div class="links-of-author motion-element">
+        
+      </div>
+
+      
+      
 
     </div>
-    <div class="mb-search">
-  <form action="//baidu.com/search" method="get" accept-charset="utf-8">
-    <input type="search" name="q" results="0" placeholder="Search">
-    <input type="hidden" name="q" value="site:blog.yoosan.me">
-  </form>
-</div>
-<footer id="footer">
-	<h1 class="footer-blog-title">
-		<a href="/">MathDimensions</a>
-	</h1>
-	<span class="copyright">
-		&copy; 2015 Clivia<br>
-		Modify from <a href="http://sanographix.github.io/tumblr/apollo/" target="_blank">Apollo</a> theme, designed by <a href="http://www.mathant.com/" target="_blank">Yosa</a><br>
-		Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
-	</span>
-</footer>
 
     
-<script>
-  var disqus_shortname = 'yosezhou';
+
+  </div>
+</div>
+
+
+      </div>
+    </div>
+
+    <div id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">
   
-  (function(){
-    var dsq = document.createElement('script');
-    dsq.type = 'text/javascript';
-    dsq.async = true;
-    dsq.src = '//go.disqus.com/count.js';
-    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-  })();
+  &copy; &nbsp; 
+  2015
+  <span class="with-love">
+    <i class="icon-heart"></i>
+  </span>
+  <span class="author">yoosan</span>
+</div>
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="http://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT
+  </a>
+</div>
+
+
+
+      </div>
+    </div>
+
+    <div class="back-to-top"></div>
+  </div>
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript">
+    $(document).ready(function() {
+      $(".fancybox").fancybox();
+    });
+  </script>
+
+  <script type="text/javascript">
+  function hasMobileUA () {
+    var nav = window.navigator;
+    var ua = nav.userAgent;
+    var pa = /iPad|iPhone|Android|Opera Mini|BlackBerry|webOS|UCWEB|Blazer|PSP|IEMobile|Symbian/g;
+
+    return pa.test(ua);
+  }
+
+  function isDesktop () {
+    return screen.width > 991 && !hasMobileUA();
+  }
+
+  function isTablet () {
+    return screen.width < 992 && screen.width > 767 && hasMobileUA();
+  }
+
+  function isMobile () {
+    return screen.width < 767 && hasMobileUA();
+  }
+
+  function escapeSelector (selector) {
+    return selector.replace(/[!"$%&'()*+,.\/:;<=>?@[\\\]^`{|}~]/g, "\\$&")
+  }
+</script>
+
+  
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" id="motion.global">
+  $(document).ready(function () {
+    var body = $('body');
+    var isSidebarVisible = false;
+    var sidebarToggle = $('.sidebar-toggle');
+    var sidebarToggleLine1st = $('.sidebar-toggle-line-first')
+    var sidebarToggleLine2nd = $('.sidebar-toggle-line-middle');
+    var sidebarToggleLine3rd = $('.sidebar-toggle-line-last');
+    var sidebar = $('.sidebar');
+
+    var SIDEBAR_WIDTH = '320px';
+    var SIDEBAR_DISPLAY_DURATION = 300;
+
+    var sidebarToogleLineStatusInit = {width: '100%', opacity: 1, left: 0, rotateZ: 0, top: 0};
+
+    var sidebarToggleLine1stStatusInit = sidebarToogleLineStatusInit;
+    var sidebarToggleLine1stStatusArrow = {width: '50%', rotateZ: '-45deg', top: '2px'};
+    var sidebarToogleLine1stStatusClose = {width: '100%', rotateZ: '-45deg', top: '5px'};
+
+    var sidebarToggleLine2ndStatusInit = sidebarToogleLineStatusInit;
+    var sidebarToggleLine2ndStatusArrow = {width: '90%'};
+    var sidebarToogleLine2ndStatusClose = {opacity: 0};
+
+    var sidebarToggleLine3rdStatusInit = sidebarToogleLineStatusInit;
+    var sidebarToggleLine3rdStatusArrow = {width: '50%', rotateZ: '45deg', top: '-2px'};
+    var sidebarToogleLine3rdStatusClose = {width: '100%', rotateZ: '45deg', top: '-5px'};
+
+    LogoAndMenuMotion();
+    sidebatToggleMotion();
+    postsListMotion();
+    backToTopMotion();
+
+
+    $(document)
+      .on('sidebar.isShowing', function () {
+        isDesktop() && body.velocity(
+          {paddingRight: SIDEBAR_WIDTH},
+          SIDEBAR_DISPLAY_DURATION
+        );
+        sidebarContentMotion();
+      })
+      .on('sidebar.isHiding', function () {});
+
+    function LogoAndMenuMotion() {
+      $.Velocity.RunSequence([
+        { e: $('.brand'), p: { opacity: 1 }, o: { duration: 100 } },
+        { e: $('.logo'), p: { opacity: 1, top: 0 }, o: { duration: 50} },
+        
+        { e: $('.site-title'), p: { opacity: 1, top: 0 }, o: { duration: 200 } }
+      ]);
+      $('.menu-item').velocity('transition.slideDownIn', {display: null});
+    }
+
+
+    function backToTopMotion () {
+      var b2top = $('.back-to-top');
+      b2top.on('click', function () {
+        body.velocity('scroll');
+      });
+    }
+
+    function sidebarShowMotion () {
+
+      sidebarToggleLine1st.velocity(sidebarToogleLine1stStatusClose);
+      sidebarToggleLine2nd.velocity(sidebarToogleLine2ndStatusClose);
+      sidebarToggleLine3rd.velocity(sidebarToogleLine3rdStatusClose);
+
+      sidebar.velocity({width: SIDEBAR_WIDTH}, {
+        display: 'block',
+        duration: SIDEBAR_DISPLAY_DURATION,
+        complete: function () {
+          sidebar.addClass('sidebar-active');
+          sidebar.trigger('sidebar.didShow');
+        }
+      });
+      sidebar.trigger('sidebar.isShowing');
+    }
+
+    function sidebarHideMotion () {
+      isDesktop() && body.velocity({paddingRight: 0});
+      sidebar.velocity('reverse');
+
+      sidebarToggleLine1st.velocity(sidebarToggleLine1stStatusInit);
+      sidebarToggleLine2nd.velocity(sidebarToggleLine2ndStatusInit);
+      sidebarToggleLine3rd.velocity(sidebarToggleLine3rdStatusInit);
+
+      sidebar.removeClass('sidebar-active');
+      sidebar.trigger('sidebar.isHiding');
+    };
+
+    function sidebarContentMotion () {
+      $('.sidebar .motion-element').velocity(
+        'transition.slideRightIn',
+        {stagger: 50, drag: true}
+      );
+    }
+
+    function postsListMotion () {
+      var postMotionOptions = window.postMotionOptions || {stagger: 300, drag: true};
+      $('.post').velocity('transition.slideDownIn', postMotionOptions);
+    }
+
+    function sidebatToggleMotion () {
+      sidebarToggle.on('click', function () {
+        isSidebarVisible ? sidebarHideMotion() : sidebarShowMotion();
+        isSidebarVisible = !isSidebarVisible;
+      });
+
+      sidebarToggle.hover(function () {
+        if (isSidebarVisible) {return}
+        sidebarToggleLine1st.velocity('stop').velocity(sidebarToggleLine1stStatusArrow);
+        sidebarToggleLine2nd.velocity('stop').velocity(sidebarToggleLine2ndStatusArrow);
+        sidebarToggleLine3rd.velocity('stop').velocity(sidebarToggleLine3rdStatusArrow);
+      }, function () {
+        if (isSidebarVisible) {return}
+        sidebarToggleLine1st.velocity('stop').velocity(sidebarToggleLine1stStatusInit);
+        sidebarToggleLine2nd.velocity('stop').velocity(sidebarToggleLine2ndStatusInit);
+        sidebarToggleLine3rd.velocity('stop').velocity(sidebarToggleLine3rdStatusInit);
+      });
+    }
+  });
+
 </script>
 
 
-<script src="/js/jquery-1.11.1.min.js"></script>
 
 
-<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
-<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+  
+
+  
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for (i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
 
-<script src="/js/script.js" type="text/javascript"></script>
+  
+  
+
+  
+
+    
+      
+    
+
+    <script type="text/javascript">
+      var disqus_shortname = 'yosezhou';
+      var disqus_identifier = '';
+      var disqus_url = '';
+
+      (function(){
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      }());
+    </script>
+  
 
 
-  </div>
+  
 </body>
 </html>
