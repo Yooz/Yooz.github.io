@@ -1,0 +1,980 @@
+<!doctype html>
+<html class="theme-next use-motion theme-next-next">
+<head>
+  
+
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+  <link rel="stylesheet" type="text/css" href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5"/>
+
+
+<link rel="stylesheet" type="text/css" href="/css/main.css?v=0.4.0"/>
+
+
+
+
+	<meta name="keywords" content="ruby rails app," />
+
+  <title> Linux(Ubuntu)上部署rails应用,使用unicorn和nginx // MathDimensions </title>
+</head>
+
+<body>
+  <div class="container one-column page-post-detail">
+    <div class="headband"></div>
+
+    <div id="header" class="header">
+      <div class="header-inner">
+        <h1 class="site-meta">
+  <span class="logo-line-before"><i></i></span>
+  <a href="/" class="brand">
+      <span class="logo">
+        <i class="icon-logo"></i>
+      </span>
+      <span class="site-title">MathDimensions</span>
+  </a>
+  <span class="logo-line-after"><i></i></span>
+</h1>
+
+
+  <ul id="menu" class="menu">
+    
+      
+      <li class="menu-item menu-item-home">
+        <a href="/">
+          <i class="menu-item-icon icon-home"></i> <br />
+          Home
+        </a>
+      </li>
+    
+      
+      <li class="menu-item menu-item-archives">
+        <a href="/archives">
+          <i class="menu-item-icon icon-archives"></i> <br />
+          Archives
+        </a>
+      </li>
+    
+      
+      <li class="menu-item menu-item-tags">
+        <a href="/tags">
+          <i class="menu-item-icon icon-tags"></i> <br />
+          Tags
+        </a>
+      </li>
+    
+      
+      <li class="menu-item menu-item-about">
+        <a href="/about">
+          <i class="menu-item-icon icon-about"></i> <br />
+          About
+        </a>
+      </li>
+    
+  </ul>
+
+
+      </div>
+    </div>
+
+    <div id="main" class="main">
+      <div class="main-inner">
+        <div id="content" class="content">
+          
+            
+          
+
+          <div id="posts" class="posts-expand">
+            
+  
+
+  <div class="post post-type-normal ">
+    <div class="post-header">
+
+      
+      
+        <h1 class="post-title">
+          
+          
+            
+              Linux(Ubuntu)上部署rails应用,使用unicorn和nginx
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          
+            Posted on 2015-08-08
+          
+        </span>
+
+        
+          
+            <span class="post-category">
+              &nbsp; | &nbsp; In
+              
+                <a href="/categories/learn/">learn</a>
+
+                
+                
+
+              
+            </span>
+          
+        
+
+        
+          
+            <span class="post-comments-count">
+            &nbsp; | &nbsp;
+            <a href="/2015/08/09/Linux(Ubuntu)上部署rails应用,使用unicorn和nginx/#comments" >
+              <span class="post-comments-count ds-thread-count" data-thread-key="2015/08/09/Linux(Ubuntu)上部署rails应用,使用unicorn和nginx/"></span>
+            </a>
+          </span>
+          
+        
+      </div>
+    </div>
+
+    
+      <div class="post-body">
+
+        
+        
+
+        
+          <p>这篇文章算是做一个总结吧，我就会一步步地列出在Linux服务器上怎么搭建一个rails应用。我使用的服务器是阿里云的VPS。配置如下</p>
+<ul>
+<li>CPU： 1核</li>
+<li>内存： 1024 MB</li>
+<li>操作系统： Ubuntu 14.04 64位</li>
+<li>带宽：1Mbps</li>
+</ul>
+<h3 id="安装必要的包、软件、以及数据库">安装必要的包、软件、以及数据库</h3>
+<hr>
+<h4 id="安装git，使用git下载">安装git，使用git下载</h4>
+<p>我是通过在本地写好了rails app，再将app上传到github，然后在我的服务器中把app clone下来。在服务器上进行部署的，所以首先我会介绍一下git的基本用法。（<strong>不是通过这种方法的可以跳过这里</strong>）</p>
+<ol>
+<li><strong>ssh</strong>连到服务器, <code>ssh root@serveraddress</code></li>
+<li>在服务器上安装git. <code>apt-get install git</code></li>
+<li>生成ssh key. <code> ssh-keygen </code> 然后.ssh目录下会生成id_rsa. <code>cd ~/.ssh</code></li>
+<li>登陆你的github(如果没有需要申请)，在setting -&gt; SSH keys那里添加(Add ssh key)id_rsa的内容。</li>
+<li>把你的项目clone下来.<code>git clone git@github.com:username/appname</code> <code>cd appname &amp;&amp; git pull</code></li>
+<li>修改目录权限<code>chmod 777 appname</code></li>
+</ol>
+<h4 id="安装MySQL数据库">安装MySQL数据库</h4>
+<p>我的项目中一般都是使用MySQL作为关系型数据库。如果需求安装其他数据库，请查看相关官方文档说明。</p>
+<ol>
+<li>首先更新一下包 <strong>apt-get</strong> <code>apt-get update</code></li>
+<li>下载MySQL服务器 <code>apt-get install mysql-server</code>和<code>apt-get install libmysqlclient-dev</code> 过程中会让你输入密码，如果不输入，密码默认为空。</li>
+<li>登陆数据库查看一下。<code>mysql -u root -p </code> 输入密码。如果成功登陆，说明数据库下载成功。</li>
+<li>配置数据库。默认情况下sock会在/tmp/这个目录下。其他配置参考MySQL官方文档。</li>
+</ol>
+<h3 id="下载安装Ruby和Rails">下载安装Ruby和Rails</h3>
+<hr>
+<p>对于ruby的包管理，我推荐使用<a href="http://rvm.io" target="_blank" rel="external">rvm</a>。首先安装rvm，再安装ruby，再安装rails。通过rvm来管理ruby和rails的版本。</p>
+<h4 id="安装rvm、ruby以及rails">安装rvm、ruby以及rails</h4>
+<pre><code>apt-get <span class="operator"><span class="keyword">install</span> curl
+\curl -sSL https://<span class="keyword">get</span>.rvm.io | bash -s stable
+source ~/.<span class="keyword">profile</span>
+rvm -v
+rvm <span class="keyword">install</span> <span class="number">2.0</span><span class="number">.0</span>
+rvm <span class="keyword">use</span> <span class="number">2.0</span><span class="number">.0</span>
+gem <span class="keyword">install</span> rails -v <span class="number">4.2</span><span class="number">.1</span> <span class="comment">--no-ri --no-rdoc</span>
+rvm gemset <span class="keyword">create</span> rails421
+rvm <span class="keyword">use</span> <span class="number">2.0</span><span class="number">.0</span>@rails421</span>
+</code></pre><p>请确保上面每一个步骤都是成功的。curl是一个catch url工具，rvm是ruby的版本管理工具。rails是ruby的一个gem包，gem是ruby的包管理工具。最后在你的服务器上试一下</p>
+<pre><code>rvm -<span class="keyword">v</span>
+<span class="keyword">ruby</span> -<span class="keyword">v</span>
+rails -<span class="keyword">v</span>
+</code></pre><p>是否显示出对应的版本。如果正确，说明安装成功。</p>
+<h4 id="配置rails_应用的数据库和unicorn">配置rails 应用的数据库和unicorn</h4>
+<p>对于数据库的配置，在<code>/appname/config/database.yml</code>中进行配置。</p>
+<p>对于unicorn，在Gemfile中加入<code>gem ‘unicorn’</code>然后创建<strong>unicorn.rb</strong>文件并在<code>/appname/config/unicorn.rb</code>中进行配置。一般为</p>
+<pre><code><span class="comment"># set path to application</span>
+<span class="comment"># app_dir is your rails app directory path</span>
+app_dir = <span class="constant">File</span>.expand_path(<span class="string">"../.."</span>, __FILE_<span class="number">_</span>)
+shared_dir = <span class="string">"<span class="subst">#{app_dir}</span>/shared"</span>
+working_directory app_dir
+
+
+<span class="comment"># Set unicorn options</span>
+worker_processes <span class="number">2</span>
+preload_app <span class="keyword">true</span>
+timeout <span class="number">30</span>
+
+<span class="comment"># Set up socket location</span>
+listen <span class="string">"<span class="subst">#{shared_dir}</span>/sockets/unicorn.sock"</span>, <span class="symbol">:backlog</span> =&gt; <span class="number">64</span>
+
+<span class="comment"># Logging</span>
+stderr_path <span class="string">"<span class="subst">#{shared_dir}</span>/log/unicorn.stderr.log"</span>
+stdout_path <span class="string">"<span class="subst">#{shared_dir}</span>/log/unicorn.stdout.log"</span>
+
+<span class="comment"># Set master PID location</span>
+pid <span class="string">"<span class="subst">#{shared_dir}</span>/pids/unicorn.pid"</span>
+</code></pre><p>创建目录<code>mkdir -p shared/pids shared/sockets shared/log</code></p>
+<p>最后执行<code>bundle install </code></p>
+<h3 id="下载并配置nginx">下载并配置nginx</h3>
+<hr>
+<p>nginx是一个反向代理服务器，也是目前最受欢迎的开源代理服务器。<br>首先下载nginx并进行配置。它的配置在<code>/etc/nginx/</code>这个目录下</p>
+<pre><code>apt-<span class="built_in">get</span> install nginx
+<span class="keyword">cd</span> /etc/nginx/sites-available
+<span class="keyword">vi</span> default
+</code></pre><p>对这个文件进行编辑</p>
+<pre><code><span class="title">upstream</span> app {
+<span class="comment"># Path to Unicorn SOCK file, as defined previously</span>
+<span class="title">server</span> <span class="url">unix:/path/to/app/shared/sockets/unicorn.sock</span> fail_timeout=<span class="number">0</span>;
+}
+
+
+<span class="title">server</span> {
+    <span class="title">listen</span> <span class="number">80</span> default_server;
+    <span class="comment"># listen [::]:80 default_server ipv6only=on;</span>
+
+    <span class="title">root</span> /path/to/app/public;
+    <span class="title">index</span> index.html index.htm;
+
+    <span class="comment"># Make site accessible from http://localhost/</span>
+    <span class="title">server_name</span> localhost;
+    <span class="title">location</span> <span class="variable">@app</span> {
+            <span class="title">proxy_pass</span> <span class="url">http://app</span>;
+            <span class="title">proxy_set_header</span> X-Forwarded-For <span class="variable">$proxy_add_x_forwarded_for</span>;
+            <span class="title">proxy_set_header</span> Host <span class="variable">$http_host</span>;
+            <span class="title">proxy_redirect</span> <span class="built_in">off</span>;
+    }
+
+    <span class="title">location</span> / {
+            <span class="title">try_files</span> <span class="variable">$uri</span>/index.html <span class="variable">$uri</span>.html <span class="variable">$uri</span> <span class="variable">@app</span>;
+            <span class="comment"># proxy_pass http://127.0.0.1:3000</span>
+            <span class="comment"># First attempt to serve request as file, then</span>
+            <span class="comment"># as directory, then fall back to displaying a 404.</span>
+            <span class="comment"># try_files $uri $uri/ =404;</span>
+            <span class="comment"># Uncomment to enable naxsi on this location</span>
+            <span class="comment"># include /etc/nginx/naxsi.rules</span>
+    }
+    <span class="title">error_page</span> <span class="number">500</span> <span class="number">502</span> <span class="number">503</span> <span class="number">504</span> /<span class="number">500</span>.html;
+    <span class="title">client_max_body_size</span> <span class="number">4G</span>;
+</code></pre><p><strong>注意：/path/to/app/ 指的是你的应用的路径</strong></p>
+<pre><code>chmod g+x <span class="regexp">/username &amp;&amp; chmod g+x /</span>username<span class="regexp">/appname &amp;&amp; chmod g+x /</span>username<span class="regexp">/appname/</span><span class="keyword">public</span>
+</code></pre><p>配置完之后启动<strong>unicorn</strong>和<strong>nginx</strong></p>
+<pre><code>bundle <span class="keyword">exec</span> unicorn -c config/unicorn.rb -p <span class="number">3000</span> -D
+service nginx restart
+</code></pre><p>最后，你就可以通过ip访问页面了。</p>
+<h3 id="Reference">Reference</h3>
+<hr>
+<ul>
+<li><a href="https://www.digitalocean.com/community/tutorials/how-to-deploy-a-rails-app-with-unicorn-and-nginx-on-ubuntu-14-04" target="_blank" rel="external">how-to-deploy-a-rails-app-with-unicorn-and-nginx-on-ubuntu-14-04</a></li>
+<li><a href="https://github.com/defunkt/unicorn" target="_blank" rel="external">unicorn配置</a></li>
+<li><a href="http://stackoverflow.com/questions/25774999/nginx-stat-failed-13-permission-denied" target="_blank" rel="external">权限问题1</a></li>
+<li><a href="https://ruby-china.org/topics/458" target="_blank" rel="external">权限问题2</a></li>
+</ul>
+
+        
+      </div>
+    
+
+    
+      <div class="post-footer">
+        
+          <div class="post-tags">
+            
+              <a href="/tags/ruby-rails-app/">
+                #ruby rails app
+              </a>
+            
+          </div>
+        
+
+        
+          <div class="post-nav">
+            <div class="post-nav-prev post-nav-item">
+              
+                <a href="/2016/01/10/2015-summary/">Something wrong</a>
+              
+            </div>
+
+            <div class="post-nav-next post-nav-item">
+              
+                <a href="/2015/01/01/how-do-i-learn-machine-learning/">How do I learn Machine Learning</a>
+              
+            </div>
+          </div>
+        
+
+        
+        
+      </div>
+    
+  </div>
+
+
+
+  
+    <div class="comments" id="comments">
+      
+        <div class="ds-thread" data-thread-key="2015/08/09/Linux(Ubuntu)上部署rails应用,使用unicorn和nginx/"
+             data-title="Linux(Ubuntu)上部署rails应用,使用unicorn和nginx" data-url="http://blog.yoosan.me/2015/08/09/Linux(Ubuntu)上部署rails应用,使用unicorn和nginx/">
+        </div>
+
+      
+    </div>
+  
+
+          </div>
+
+          
+        </div>
+
+        
+<div class="sidebar-toggle">
+  <div class="sidebar-toggle-line-wrap">
+    <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+    <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+    <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+  </div>
+</div>
+
+<div id="sidebar" class="sidebar">
+  <div class="sidebar-inner">
+
+    
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+          Table Of Contents
+        </li>
+        <li class="sidebar-nav-overview" data-target="site-overview">
+          Overview
+        </li>
+      </ul>
+    
+
+    <div class="site-overview">
+      <div class="site-author motion-element">
+        <img class="site-author-image" src="/images/default_avatar.jpg" alt="yoosan" />
+        <p class="site-author-name">yoosan</p>
+      </div>
+      <p class="site-description motion-element"></p>
+      <div class="site-state motion-element">
+        <div class="site-state-item site-state-posts">
+          <span class="site-state-item-count">5</span>
+          <span class="site-state-item-name">posts</span>
+        </div>
+        <div class="site-state-item site-state-tags">
+            <span class="site-state-item-count">4</span>
+            <span class="site-state-item-name">tags</span>
+        </div>
+        <div class="site-state-item site-state-pages">
+            <span class="site-state-item-count">2</span>
+            <span class="site-state-item-name">pages</span>
+        </div>
+      </div>
+
+      
+
+      <div class="links-of-author motion-element">
+        
+      </div>
+
+      
+      
+
+    </div>
+
+    
+      <div class="post-toc-wrap sidebar-panel-active">
+        <div class="post-toc-indicator-top post-toc-indicator"></div>
+        <div class="post-toc">
+          
+          
+            <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#安装必要的包、软件、以及数据库"><span class="nav-number">1.</span> <span class="nav-text">安装必要的包、软件、以及数据库</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#安装git，使用git下载"><span class="nav-number">1.1.</span> <span class="nav-text">安装git，使用git下载</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#安装MySQL数据库"><span class="nav-number">1.2.</span> <span class="nav-text">安装MySQL数据库</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#下载安装Ruby和Rails"><span class="nav-number">2.</span> <span class="nav-text">下载安装Ruby和Rails</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#安装rvm、ruby以及rails"><span class="nav-number">2.1.</span> <span class="nav-text">安装rvm、ruby以及rails</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#配置rails_应用的数据库和unicorn"><span class="nav-number">2.2.</span> <span class="nav-text">配置rails 应用的数据库和unicorn</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#下载并配置nginx"><span class="nav-number">3.</span> <span class="nav-text">下载并配置nginx</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Reference"><span class="nav-number">4.</span> <span class="nav-text">Reference</span></a></li></ol></div>
+          
+        </div>
+        <div class="post-toc-indicator-bottom post-toc-indicator"></div>
+      </div>
+    
+
+  </div>
+</div>
+
+
+      </div>
+    </div>
+
+    <div id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">
+  
+  &copy; &nbsp; 
+  2016
+  <span class="with-love">
+    <i class="icon-heart"></i>
+  </span>
+  <span class="author">yoosan</span>
+</div>
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="http://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT
+  </a>
+</div>
+
+
+
+      </div>
+    </div>
+
+    <div class="back-to-top"></div>
+  </div>
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript">
+    $(document).ready(function() {
+      $(".fancybox").fancybox();
+    });
+  </script>
+
+  <script type="text/javascript">
+  function hasMobileUA () {
+    var nav = window.navigator;
+    var ua = nav.userAgent;
+    var pa = /iPad|iPhone|Android|Opera Mini|BlackBerry|webOS|UCWEB|Blazer|PSP|IEMobile|Symbian/g;
+
+    return pa.test(ua);
+  }
+
+  function isDesktop () {
+    return screen.width > 991 && !hasMobileUA();
+  }
+
+  function isTablet () {
+    return screen.width < 992 && screen.width > 767 && hasMobileUA();
+  }
+
+  function isMobile () {
+    return screen.width < 767 && hasMobileUA();
+  }
+
+  function escapeSelector (selector) {
+    return selector.replace(/[!"$%&'()*+,.\/:;<=>?@[\\\]^`{|}~]/g, "\\$&")
+  }
+</script>
+
+  
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" id="motion.global">
+  $(document).ready(function () {
+    var body = $('body');
+    var isSidebarVisible = false;
+    var sidebarToggle = $('.sidebar-toggle');
+    var sidebarToggleLine1st = $('.sidebar-toggle-line-first')
+    var sidebarToggleLine2nd = $('.sidebar-toggle-line-middle');
+    var sidebarToggleLine3rd = $('.sidebar-toggle-line-last');
+    var sidebar = $('.sidebar');
+
+    var SIDEBAR_WIDTH = '320px';
+    var SIDEBAR_DISPLAY_DURATION = 300;
+
+    var sidebarToogleLineStatusInit = {width: '100%', opacity: 1, left: 0, rotateZ: 0, top: 0};
+
+    var sidebarToggleLine1stStatusInit = sidebarToogleLineStatusInit;
+    var sidebarToggleLine1stStatusArrow = {width: '50%', rotateZ: '-45deg', top: '2px'};
+    var sidebarToogleLine1stStatusClose = {width: '100%', rotateZ: '-45deg', top: '5px'};
+
+    var sidebarToggleLine2ndStatusInit = sidebarToogleLineStatusInit;
+    var sidebarToggleLine2ndStatusArrow = {width: '90%'};
+    var sidebarToogleLine2ndStatusClose = {opacity: 0};
+
+    var sidebarToggleLine3rdStatusInit = sidebarToogleLineStatusInit;
+    var sidebarToggleLine3rdStatusArrow = {width: '50%', rotateZ: '45deg', top: '-2px'};
+    var sidebarToogleLine3rdStatusClose = {width: '100%', rotateZ: '45deg', top: '-5px'};
+
+    LogoAndMenuMotion();
+    sidebatToggleMotion();
+    postsListMotion();
+    backToTopMotion();
+
+
+    $(document)
+      .on('sidebar.isShowing', function () {
+        isDesktop() && body.velocity(
+          {paddingRight: SIDEBAR_WIDTH},
+          SIDEBAR_DISPLAY_DURATION
+        );
+        sidebarContentMotion();
+      })
+      .on('sidebar.isHiding', function () {});
+
+    function LogoAndMenuMotion() {
+      $.Velocity.RunSequence([
+        { e: $('.brand'), p: { opacity: 1 }, o: { duration: 100 } },
+        { e: $('.logo'), p: { opacity: 1, top: 0 }, o: { duration: 50} },
+        
+        { e: $('.site-title'), p: { opacity: 1, top: 0 }, o: { duration: 200 } }
+      ]);
+      $('.menu-item').velocity('transition.slideDownIn', {display: null});
+    }
+
+
+    function backToTopMotion () {
+      var b2top = $('.back-to-top');
+      b2top.on('click', function () {
+        body.velocity('scroll');
+      });
+    }
+
+    function sidebarShowMotion () {
+
+      sidebarToggleLine1st.velocity(sidebarToogleLine1stStatusClose);
+      sidebarToggleLine2nd.velocity(sidebarToogleLine2ndStatusClose);
+      sidebarToggleLine3rd.velocity(sidebarToogleLine3rdStatusClose);
+
+      sidebar.velocity({width: SIDEBAR_WIDTH}, {
+        display: 'block',
+        duration: SIDEBAR_DISPLAY_DURATION,
+        complete: function () {
+          sidebar.addClass('sidebar-active');
+          sidebar.trigger('sidebar.didShow');
+        }
+      });
+      sidebar.trigger('sidebar.isShowing');
+    }
+
+    function sidebarHideMotion () {
+      isDesktop() && body.velocity({paddingRight: 0});
+      sidebar.velocity('reverse');
+
+      sidebarToggleLine1st.velocity(sidebarToggleLine1stStatusInit);
+      sidebarToggleLine2nd.velocity(sidebarToggleLine2ndStatusInit);
+      sidebarToggleLine3rd.velocity(sidebarToggleLine3rdStatusInit);
+
+      sidebar.removeClass('sidebar-active');
+      sidebar.trigger('sidebar.isHiding');
+    };
+
+    function sidebarContentMotion () {
+      $('.sidebar .motion-element').velocity(
+        'transition.slideRightIn',
+        {stagger: 50, drag: true}
+      );
+    }
+
+    function postsListMotion () {
+      var postMotionOptions = window.postMotionOptions || {stagger: 300, drag: true};
+      $('.post').velocity('transition.slideDownIn', postMotionOptions);
+    }
+
+    function sidebatToggleMotion () {
+      sidebarToggle.on('click', function () {
+        isSidebarVisible ? sidebarHideMotion() : sidebarShowMotion();
+        isSidebarVisible = !isSidebarVisible;
+      });
+
+      sidebarToggle.hover(function () {
+        if (isSidebarVisible) {return}
+        sidebarToggleLine1st.velocity('stop').velocity(sidebarToggleLine1stStatusArrow);
+        sidebarToggleLine2nd.velocity('stop').velocity(sidebarToggleLine2ndStatusArrow);
+        sidebarToggleLine3rd.velocity('stop').velocity(sidebarToggleLine3rdStatusArrow);
+      }, function () {
+        if (isSidebarVisible) {return}
+        sidebarToggleLine1st.velocity('stop').velocity(sidebarToggleLine1stStatusInit);
+        sidebarToggleLine2nd.velocity('stop').velocity(sidebarToggleLine2ndStatusInit);
+        sidebarToggleLine3rd.velocity('stop').velocity(sidebarToggleLine3rdStatusInit);
+      });
+    }
+  });
+
+</script>
+
+
+
+
+
+  
+  
+<script type="text/javascript" id="bootstrap.scrollspy.custom">
+  /* ========================================================================
+  * Bootstrap: scrollspy.js v3.3.2
+  * http://getbootstrap.com/javascript/#scrollspy
+  * ========================================================================
+  * Copyright 2011-2015 Twitter, Inc.
+  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
+  * ======================================================================== */
+
+  /**
+   * Custom by iissnan
+   *
+   * - Add a `clear.bs.scrollspy` event.
+   * - Esacpe targets selector.
+   */
+
+
+  +function ($) {
+    'use strict';
+
+    // SCROLLSPY CLASS DEFINITION
+    // ==========================
+
+    function ScrollSpy(element, options) {
+      this.$body          = $(document.body)
+      this.$scrollElement = $(element).is(document.body) ? $(window) : $(element)
+      this.options        = $.extend({}, ScrollSpy.DEFAULTS, options)
+      this.selector       = (this.options.target || '') + ' .nav li > a'
+      this.offsets        = []
+      this.targets        = []
+      this.activeTarget   = null
+      this.scrollHeight   = 0
+
+      this.$scrollElement.on('scroll.bs.scrollspy', $.proxy(this.process, this))
+      this.refresh()
+      this.process()
+    }
+
+    ScrollSpy.VERSION  = '3.3.2'
+
+    ScrollSpy.DEFAULTS = {
+      offset: 10
+    }
+
+    ScrollSpy.prototype.getScrollHeight = function () {
+      return this.$scrollElement[0].scrollHeight || Math.max(this.$body[0].scrollHeight, document.documentElement.scrollHeight)
+    }
+
+    ScrollSpy.prototype.refresh = function () {
+      var that          = this
+      var offsetMethod  = 'offset'
+      var offsetBase    = 0
+
+      this.offsets      = []
+      this.targets      = []
+      this.scrollHeight = this.getScrollHeight()
+
+      if (!$.isWindow(this.$scrollElement[0])) {
+        offsetMethod = 'position'
+        offsetBase   = this.$scrollElement.scrollTop()
+      }
+
+      this.$body
+        .find(this.selector)
+        .map(function () {
+          var $el   = $(this)
+          var href  = $el.data('target') || $el.attr('href')
+          var $href = /^#./.test(href) && $(escapeSelector(href)) // Need to escape selector.
+
+          return ($href
+            && $href.length
+            && $href.is(':visible')
+            && [[$href[offsetMethod]().top + offsetBase, href]]) || null
+        })
+        .sort(function (a, b) { return a[0] - b[0] })
+        .each(function () {
+          that.offsets.push(this[0])
+          that.targets.push(this[1])
+        })
+
+
+    }
+
+    ScrollSpy.prototype.process = function () {
+      var scrollTop    = this.$scrollElement.scrollTop() + this.options.offset
+      var scrollHeight = this.getScrollHeight()
+      var maxScroll    = this.options.offset + scrollHeight - this.$scrollElement.height()
+      var offsets      = this.offsets
+      var targets      = this.targets
+      var activeTarget = this.activeTarget
+      var i
+
+      if (this.scrollHeight != scrollHeight) {
+        this.refresh()
+      }
+
+      if (scrollTop >= maxScroll) {
+        return activeTarget != (i = targets[targets.length - 1]) && this.activate(i)
+      }
+
+      if (activeTarget && scrollTop < offsets[0]) {
+        $(this.selector).trigger('clear.bs.scrollspy')  // Add a custom event.
+        this.activeTarget = null
+        return this.clear()
+      }
+
+      for (i = offsets.length; i--;) {
+        activeTarget != targets[i]
+          && scrollTop >= offsets[i]
+          && (!offsets[i + 1] || scrollTop <= offsets[i + 1])
+          && this.activate(targets[i])
+      }
+    }
+
+    ScrollSpy.prototype.activate = function (target) {
+      this.activeTarget = target
+
+      this.clear()
+
+      var selector = this.selector +
+        '[data-target="' + target + '"],' +
+        this.selector + '[href="' + target + '"]'
+
+      var active = $(selector)
+        .parents('li')
+        .addClass('active')
+
+      if (active.parent('.dropdown-menu').length) {
+        active = active
+          .closest('li.dropdown')
+          .addClass('active')
+      }
+
+      active.trigger('activate.bs.scrollspy')
+    }
+
+    ScrollSpy.prototype.clear = function () {
+      $(this.selector)
+        .parentsUntil(this.options.target, '.active')
+        .removeClass('active')
+    }
+
+
+    // SCROLLSPY PLUGIN DEFINITION
+    // ===========================
+
+    function Plugin(option) {
+      return this.each(function () {
+        var $this   = $(this)
+        var data    = $this.data('bs.scrollspy')
+        var options = typeof option == 'object' && option
+
+        if (!data) $this.data('bs.scrollspy', (data = new ScrollSpy(this, options)))
+        if (typeof option == 'string') data[option]()
+      })
+    }
+
+    var old = $.fn.scrollspy
+
+    $.fn.scrollspy             = Plugin
+    $.fn.scrollspy.Constructor = ScrollSpy
+
+
+    // SCROLLSPY NO CONFLICT
+    // =====================
+
+    $.fn.scrollspy.noConflict = function () {
+      $.fn.scrollspy = old
+      return this
+    }
+
+
+    // SCROLLSPY DATA-API
+    // ==================
+
+    $(window).on('load.bs.scrollspy.data-api', function () {
+      $('[data-spy="scroll"]').each(function () {
+        var $spy = $(this)
+        Plugin.call($spy, $spy.data())
+      })
+    })
+
+  }(jQuery);
+</script>
+
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var $sidebarInner = $('.sidebar-inner');
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.didShow', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+          var self = this;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      $(indicator).velocity('stop').velocity({
+        opacity: action === 'show' ? 0.4 : 0
+      }, { duration: 100 });
+    }
+
+  });
+</script>
+
+
+  <script type="text/javascript" id="sidebar.nav">
+    $(document).ready(function () {
+      var html = $('html');
+
+      $('.sidebar-nav li').on('click', function () {
+        var item = $(this);
+        var activeTabClassName = 'sidebar-nav-active';
+        var activePanelClassName = 'sidebar-panel-active';
+        if (item.hasClass(activeTabClassName)) {
+          return;
+        }
+
+        var currentTarget = $('.' + activePanelClassName);
+        var target = $('.' + item.data('target'));
+
+        currentTarget.velocity('transition.slideUpOut', 200, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', 200)
+            .addClass(activePanelClassName);
+        });
+
+        item.siblings().removeClass(activeTabClassName);
+        item.addClass(activeTabClassName);
+      });
+
+      $('.post-toc a').on('click', function (e) {
+        e.preventDefault();
+        var offset = $(escapeSelector(this.getAttribute('href'))).offset().top;
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        });
+      });
+
+      // Expand sidebar on post detail page by default, when post has a toc.
+      var $tocContent = $('.post-toc-content');
+      if ($tocContent.length > 0 && $tocContent.html().trim().length > 0 && isDesktop()) {
+        setTimeout(function () {
+          $('.sidebar-toggle').trigger('click');
+        }, 800);
+      }
+    });
+  </script>
+
+
+
+
+  
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for (i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"dimensions"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+  
+</body>
+</html>
